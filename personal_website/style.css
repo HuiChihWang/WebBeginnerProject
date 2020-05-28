@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+body {
+    background: url('images/taipei-cityscape.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+header {
+    text-align: center;
+    border: solid 1px red;
+}
+
+header .title {
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 1000px;
+    font-size: 70px;
+    color: yellow;
+    border: solid 1px green;
+    margin: 0;
+}
+
+nav {
+    background-color: pink;
+    opacity: 0.8;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    padding: 0 20px;
+    text-align: center;
+    margin-top: 0px;
+}
+
+nav li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+nav li a {
+    font-size: 2em;
+    font-family: Arial, sans-serif;
+    color: brown;
+    background-color: red;
+    text-decoration: none;
+    margin: 0 50px;
+    padding: 5px 10px;
+    border: 1px solid;
+    border-radius: 5px;
+}
