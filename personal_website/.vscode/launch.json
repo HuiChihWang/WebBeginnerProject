@@ -5,17 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "${workspaceFolder}/index.html"
+        },
+
+        {
             "name": "Launch localhost",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost/mypage.html",
             "webRoot": "${workspaceFolder}/wwwroot"
         },
-        {
-            "name": "Launch index.html",
-            "type": "chrome",
-            "request": "launch",
-            "file": "${workspaceFolder}/index.html"
-        },
+
     ]
 }
