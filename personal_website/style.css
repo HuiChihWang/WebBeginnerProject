@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 body {
-
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -10,8 +9,8 @@ body {
 }
 
 .bgImage {
-        background: url('images/marble.jpg');
-        /* background-repeat: no-repeat;
+    background: url('images/marble.jpg');
+    /* background-repeat: no-repeat;
         background-size: cover; */
 }
 
@@ -63,13 +62,63 @@ nav li a:hover {
 }
 
 footer {
-    width:100%;
+    width: 50%;
     height: 20%;
-    background-color: pink;
-    opacity: 0.8;
-    position: absolute;
-    top: 85%;
-    margin: 0;
-    padding: 0;
-    
+    /* position: fixed; */
+    /* top: 80%;
+    left: 50%; */
+    border: solid 1px;
+    margin: 0 auto;
+    /* margin-left: 0px;
+    margin-right: 0px; */
+}
+
+.footerLine {
+    width: 80%;
+    margin: 0 auto;
+    border: solid 1px gray;
+}
+
+footer .contact li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 30px;
+}
+
+footer .contact li a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.fb:before {
+    content: "";
+    display: inline-block;
+    height: 33px;
+    width: 33px;
+    background-image: url("images/fb-icon.png");
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.ig:before {
+    content: "";
+    display: inline-block;
+    height: 33px;
+    width: 33px;
+    background-image: url("images/ig-icon.png");
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.github:before {
+    content: "";
+    display: inline-block;
+    height: 33px;
+    width: 33px;
+    background-image: url("images/github-icon.png");
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
 }
