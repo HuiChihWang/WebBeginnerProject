@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="unit_demo.css" type="text/css" />
+    <link rel="stylesheet" href="../style.css" type="text/css" />
+    <title>Gilbert Wang</title>
+</head>
+
+<body class="bgImage">
+
+    <header>
+        <h1 class="title">Gilbert Wang From Taiwan</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bio.html">Bio</a></li>
+            <li><a href="#">Photography</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <article> 
+        <section class="pxDemo">
+            <h2>Width: Pixel</h2>
+            <div class="box">
+                <p>width: 300px</p>
+                <p>height: 200px</p>
+            </div>
+        </section>
+
+        <section class="emDemo">
+            <div class="explain">
+                <h2>Width: em</h2>
+                <strong>em unit means "my parent element's font-size" </strong>
+            </div>
+            <div class="box">
+                <p>width: 20em</p>
+                <p>height: 10em</p>
+                <p>expected size: 500px 250px</p>
+            </div>
+        </section>
+
+
+        <section class="remDemo">
+            <div class="explain">
+                <h2>Width: rem</h2>
+                <strong>rem unit means "my root element's font-size" </strong>
+            </div>
+            <div class="box">
+                <p>width: 20rem</p>
+                <p>height: 10rem</p>
+                <p>expected size: 320px 160px</p>
+            </div>
+        </section>
+
+        <section class="percentageDemo">
+            <div class="explain">
+                <h2>Width: percentage</h2>
+                <strong>rem unit means "my root element's font-size" </strong>
+            </div>
+            <div class="box">
+                <p>width: 70%</p>
+                <p>height: 200px</p>
+                <p>expected size: 560px 200px</p>
+            </div>
+        </section>
+
+        <section class="vpDemo">
+            <div class="explain">
+                <h2>Width: viewpoint</h2>
+            </div>
+            <div class="box">
+                <p>width: 70vt</p>
+                <p>height: 20vt</p>
+            </div>
+        </section>
+    </article>
+
+
+    <footer>
+        <div class="footerLine"></div>
+        <div class="contact">
+            <ul>
+                <li class="fb">
+                    <a href="#">Gilbert Wang</a>
+                </li>
+                <li class="ig">
+                    <a href="#">@hui_chih</a>
+                </li>
+                <li class="github">
+                    <a href="#">HuiChihWang</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

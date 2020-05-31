@@ -1,0 +1,59 @@
+.pxDemo .box  {
+    width: 300px;
+    height: 200px;
+    border: solid green 1px;
+    background-color: greenyellow;
+    margin: 0 auto;
+}
+
+.emDemo .box {
+    width: 20em;
+    height: 10em;
+    border: solid green 1px;
+    background-color: greenyellow;
+    margin: 0 auto;
+}
+
+.remDemo .box {
+    width: 20rem;
+    height: 10rem;
+    border: solid green 1px;
+    background-color: greenyellow;
+    margin: 0 auto;
+}
+
+.percentageDemo .box{
+    width: 70%;
+    height: 200px;
+    border: solid green 1px;
+    background-color: greenyellow;
+    margin: 0 auto;
+}
+
+.vpDemo .box {
+    width: 30vw;
+    height: 10vh;
+    border: solid green 1px;
+    background-color: greenyellow;
+    margin: 0 auto;
+}
+
+section {
+    margin: 40px auto;font-size: 25px;
+    width: 800px;
+    height: auto;
+    border: solid;
+}
+
+h2 {
+    text-align: center;
+}
+
+strong {
+    font-size: 20px;
+}
+
+.explain {
+    text-align: center;
+    margin-bottom: 30px;
+}
