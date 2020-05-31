@@ -30,14 +30,17 @@ header .title {
 }
 
 nav {
-    /* background-color: pink; */
-    /* opacity: 0.8; */
-    /* border-top: solid 1px;*/
-    padding-bottom: 20px;
+    border: solid 1px green;
     margin-top: 80px;
-    text-align: center;
 }
 
+nav ul {
+
+    border: blue 2px solid;
+    text-align: center;
+    vertical-align: middle;
+    
+}
 nav li {
     list-style-type: none;
     display: inline-block;
@@ -130,8 +133,10 @@ nav li a:hover {
     border: solid 1px blue;
     width: 100px;
     height: 100px;
+    text-align: center;
     background-color: lightblue;
     box-sizing: initial;
+    display: inline-block;
 }
 
 footer {
@@ -145,6 +150,39 @@ footer {
     margin: 0 auto;
     /* margin-left: 0px;
     margin-right: 0px; */
+}
+
+.blockImg {
+    width: 1000px;
+    height: 500px;
+    border: solid 1px;
+    margin: 0 auto;
+    background-image: url("images/taipei-cityscape.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top 40px;
+}
+
+.gradientBlock {
+    width: 1000px;
+    height:300px;
+    margin: 0 auto;
+    border: solid 1px;
+    background: linear-gradient(to right bottom, rgb(255,0,0), rgb(255, 180,180));
+    background-image: url("images/digimon-logo.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: scroll;
+    background-attachment: fix;
+}
+
+.gradientBlock::after {
+    content: "";
+}
+
+.gradientBlock p {
+    font-size: 30px;
 }
 
 .footerLine {
