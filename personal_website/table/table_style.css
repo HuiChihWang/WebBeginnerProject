@@ -6,8 +6,7 @@
 .tableCSS table {
   table-layout: fixed;
   width: 100%;
-  border-collapse: collapse;
-  border: 3px solid purple;
+  /* border-collapse: collapse; */
 }
 
 .tableCSS thead th:nth-child(1) {
@@ -29,12 +28,16 @@
 .tableCSS th,
 .tableCSS td {
   padding: 20px 25px;
-  border: 3px solid;
+  border: double;
 }
 
 .tableCSS th {
     letter-spacing: 2px;
+    background: url("../images/wood/wood_dark.jpeg");
+    color: white;
 }
+
+
 
 .tableCSS td {
     letter-spacing: 1px;
@@ -47,8 +50,29 @@
 
 .tableCSS tbody td {
     text-align: center;
+    background: url('../images/wood/wood_shallow.jpg');
+}
+
+.tableCSS tbody th {
+  background: url('../images/wood/wood_med.jpeg');
 }
 
 .tableCSS tfoot th {
     text-align: right;
+    background: url("../images/wood/wood_old.jpg");
+}
+
+.tableCSS tfoot td{
+  background: url("../images/wood/wood_old.jpg");
+  color: white;
+}
+
+caption {
+  font-family: 'Rock Salt', cursive;
+  padding: 20px;
+  font-style: italic;
+  caption-side: bottom;
+  color: #666;
+  text-align: right;
+  letter-spacing: 1px;
 }
