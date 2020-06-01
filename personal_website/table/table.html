@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" type="text/css" />
+    <link rel="stylesheet" href="table.css" type="text/css" />
+    <link rel="stylesheet" href="table_style.css" type="text/css" />
+    <title>Gilbert Wang</title>
+</head>
+
+<body class="bgImage">
+    <header>
+        <h1 class="title">Gilbert Wang From Taiwan</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bio.html">Bio</a></li>
+            <li><a href="#">Photography</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <article>
+        <section class="tableBasic table">
+            <h2>Basic Table</h2>
+            <table class="center">
+                <tr>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wendsday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+                <tr>
+                    <td>Exercise</td>
+                    <td>Coding</td>
+                    <td>Document</td>
+                    <td>Experiment</td>
+                    <td>Review</td>
+                    <td>Prepare</td>
+                    <td>Off</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="tableSpan table">
+            <h2>Table with Span Row/Column</h2>
+            <table class="center">
+                <tr>
+                    <th></th>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wendsday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+
+                <tr id="morning">
+                    <td >Morning</td>
+                    <td rowspan="2">Hiking</td>
+                    <td rowspan="2">Meeting</td>
+                    <td colspan="3" rowspan="2">Wokshop</td>
+                    <td>Seminar</td>
+                    <td rowspan="2">Off</td>
+                </tr>
+
+                <tr id="afternoon">
+                    <td>Afternoon</td>
+                    <td>Document</td>
+                </tr>
+
+                <tr id="evening">
+                    <td>Evening</td>
+                    <td>Sleep</td>
+                    <td rowspan="2">Coding</td>
+                    <td colspan="2">Review</td>
+                    <td>Present</td>
+                    <td>Party</td>
+                    <td>Basketball</td>
+                </tr>
+
+                <tr id="night">
+                    <td>Night</td>
+                    <td>Prepare</td>
+                    <td>Exersie</td>
+                    <td>Movie</td>
+                    <td>Boxing</td>
+                    <td>Clubbing</td>
+                    <td>Pub Crawing</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="table tableChild">
+            <h2>Table: Nth Child</h2>
+            <table class="center">
+                <tr>
+                    <th></th>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wendsday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+                <tr>
+                    <td>Morning</td>
+                    <td>Exercise</td>
+                    <td>Coding</td>
+                    <td>Document</td>
+                    <td>Experiment</td>
+                    <td>Review</td>
+                    <td>Prepare</td>
+                    <td>Off</td>
+                </tr>
+                <tr>
+                    <td>Afternoon</td>
+                    <td>Exercise</td>
+                    <td>Coding</td>
+                    <td>Document</td>
+                    <td>Experiment</td>
+                    <td>Review</td>
+                    <td>Prepare</td>
+                    <td>Off</td>
+                </tr>
+            </table>
+        </section>
+
+
+        <section class="tableCSS">
+            <h2>Table CSS</h2>
+            <table class="center">
+                <caption>A summary of the UK's most famous punk bands</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Band</th>
+                    <th scope="col">Year formed</th>
+                    <th scope="col">No. of Albums</th>
+                    <th scope="col">Most famous song</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Buzzcocks</th>
+                    <td>1976</td>
+                    <td>9</td>
+                    <td>Ever fallen in love (with someone you shouldn't've)</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">The Clash</th>
+                    <td>1976</td>
+                    <td>6</td>
+                    <td>London Calling</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">The Damned</th>
+                    <td>1976</td>
+                    <td>10</td>
+                    <td>Smash it up</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sex Pistols</th>
+                    <td>1975</td>
+                    <td>1</td>
+                    <td>Anarchy in the UK</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sham 69</th>
+                    <td>1976</td>
+                    <td>13</td>
+                    <td>If the kids are united</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Siouxsie and the Banshees</th>
+                    <td>1976</td>
+                    <td>11</td>
+                    <td>Hong Kong Garden</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Stiff Little Fingers</th>
+                    <td>1977</td>
+                    <td>10</td>
+                    <td>Suspect Device</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">The Stranglers</th>
+                    <td>1974</td>
+                    <td>17</td>
+                    <td>No More Heroes</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="row" colspan="2">Total albums</th>
+                    <td colspan="2">77</td>
+                  </tr>
+                </tfoot>
+              </table>
+        </section>
+    </article>
+
+    <footer>
+        <div class="footerLine"></div>
+        <div class="contact">
+            <ul>
+                <li class="fb">
+                    <a href="#">Gilbert Wang</a>
+                </li>
+                <li class="ig">
+                    <a href="#">@hui_chih</a>
+                </li>
+                <li class="github">
+                    <a href="#">HuiChihWang</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,245 +1,257 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
 body {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .bgColor {
-    background-image: linear-gradient(to bottom right, #2980b9, #6dd5fa);
+  background-image: linear-gradient(to bottom right, #2980b9, #6dd5fa);
 }
 
 .bgImage {
-    background: url('images/marble.jpg');
-    /* background-repeat: no-repeat;
+  background: url("images/marble.jpg");
+  /* background-repeat: no-repeat;
         background-size: cover; */
 }
 
 header {
-    text-align: center;
-    /* border: solid 1px red; */
+  text-align: center;
+  /* border: solid 1px red; */
 }
 
 header .title {
-    font-family: 'Shadows Into Light', cursive;
-    font-weight: 1000px;
-    font-size: 50px;
-    color: black;
-    /* border: solid 1px green; */
-    margin: 0;
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 1000px;
+  font-size: 50px;
+  color: black;
+  /* border: solid 1px green; */
+  margin: 0;
 }
 
 nav {
-    width: 1200px;
-    margin: 80px auto;
-    padding-bottom: 30px;
-    border-bottom: gray double;
+  width: 1200px;
+  margin: 80px auto;
+  padding-bottom: 30px;
+  border-bottom: gray double;
 }
 
 nav ul {
-    text-align: center;
-    vertical-align: middle;
-    
+  text-align: center;
+  vertical-align: middle;
 }
 nav li {
-    list-style-type: none;
-    display: inline-block;
+  list-style-type: none;
+  display: inline-block;
 }
 
 nav li a {
-    font-size: 20px;
-    font-family: Arial, sans-serif;
-    color: brown;
-    background-color: pink;
-    text-decoration: none;
-    margin: 0 50px;
-    padding: 10px 20px;
-    border-radius: 5px;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  color: brown;
+  background-color: pink;
+  text-decoration: none;
+  margin: 0 50px;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 nav li a:hover {
-    background-color: gray;
-    color: white;
-    font-size: 30px;
-    opacity: 0.7;
+  background-color: gray;
+  color: white;
+  font-size: 30px;
+  opacity: 0.7;
 }
 
 .boxDemo {
-    /* content only */
-    width: 300px;
-    height: 100px;
-    border: 5px solid red;
-    padding: 10px 30px;
-    background-color: green;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
+  /* content only */
+  width: 300px;
+  height: 100px;
+  border: 5px solid red;
+  padding: 10px 30px;
+  background-color: green;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 
 .boxDemo .subbox1 {
-    width: 50px;
-    height: 30px;
-    border: 1px solid green;
+  width: 50px;
+  height: 30px;
+  border: 1px solid green;
 }
 
 .boxModel {
-    /* content+padding size+boarder */
-    width: 500px;
-    height: 300px;
-    border: 5px solid red;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    box-sizing: border-box;
-    padding: 0px 30px;
-    background-color: yellow;
+  /* content+padding size+boarder */
+  width: 500px;
+  height: 300px;
+  border: 5px solid red;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  padding: 0px 30px;
+  background-color: yellow;
 }
 
 .boxModel .subbox1 {
-    width: 200px;
-    height: 100px;
-    background-color: blue;
-    border: 5px brown solid;
-    box-sizing: initial;
-    padding-left: 10px;
-    padding-right: 20px;
-    padding-top: 15px;
-    padding-bottom: 25px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    /* display: inline-block; */
+  width: 200px;
+  height: 100px;
+  background-color: blue;
+  border: 5px brown solid;
+  box-sizing: initial;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  /* display: inline-block; */
 }
 
 .boxModel .subbox2 {
-    width: 300px;
-    height: 50px;
-    background-color: red;
-    border: 5px green solid;
-    box-sizing: initial;
-    padding-left: 10px;
-    padding-right: 20px;
-    padding-top: 15px;
-    padding-bottom: 25px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 10px;
-    margin-bottom: 40px;
+  width: 300px;
+  height: 50px;
+  background-color: red;
+  border: 5px green solid;
+  box-sizing: initial;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 .spanTest {
-    border: solid 1px blue;
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    background-color: lightblue;
-    box-sizing: initial;
-    display: inline-block;
+  border: solid 1px blue;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  background-color: lightblue;
+  box-sizing: initial;
+  display: inline-block;
 }
 
 footer {
-    width: 50%;
-    height: 20%;
-    display: flex;
-    /* position: fixed; */
-    /* top: 80%;
+  width: 50%;
+  height: 20%;
+  display: flex;
+  /* position: fixed; */
+  /* top: 80%;
     left: 50%; */
-    border: solid 1px;
-    margin: 0 auto;
-    /* margin-left: 0px;
+  border: solid 1px;
+  margin: 0 auto;
+  /* margin-left: 0px;
     margin-right: 0px; */
 }
 
 .blockImg {
-    width: 1000px;
-    height: 500px;
-    border: solid 1px;
-    margin: 0 auto;
-    background-image: url("images/taipei-cityscape.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top 40px;
+  width: 1000px;
+  height: 500px;
+  border: solid 1px;
+  margin: 0 auto;
+  background-image: url("images/taipei-cityscape.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top 40px;
 }
 
 .gradientBlock {
-    width: 1000px;
-    height:300px;
-    margin: 0 auto;
-    border: solid 1px;
-    background: linear-gradient(to right bottom, rgb(255,0,0), rgb(255, 180,180));
-    background-image: url("images/digimon-logo.png");
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow: scroll;
-    background-attachment: fix;
+  width: 1000px;
+  height: 300px;
+  margin: 0 auto;
+  border: solid 1px;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 0, 0),
+    rgb(255, 180, 180)
+  );
+  background-image: url("images/digimon-logo.png");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: scroll;
+  background-attachment: fix;
 }
 
 .gradientBlock::after {
-    content: "";
+  content: "";
 }
 
 .gradientBlock p {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .footerLine {
-    width: 80%;
-    margin: 0 auto;
-    border: solid 1px gray;
+  width: 80%;
+  margin: 0 auto;
+  border: solid 1px gray;
 }
 
 footer .contact li {
-    list-style-type: none;
-    display: inline-block;
-    margin: 0 30px;
+  list-style-type: none;
+  display: inline-block;
+  margin: 10px 30px;
 }
 
 footer .contact li a {
-    text-decoration: none;
-    font-size: 20px;
-    font-family: 'Roboto Mono', monospace;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: "Roboto Mono", monospace;
 }
 
 .fb:before {
-    content: "";
-    display: inline-block;
-    height: 33px;
-    width: 33px;
-    background-image: url("images/fb-icon.png");
-    margin-right: 7px;
-    background-size: cover;
-    vertical-align: middle;
+  content: "";
+  display: inline-block;
+  height: 33px;
+  width: 33px;
+  background-image: url("images/fb-icon.png");
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
 }
 
 .ig:before {
-    content: "";
-    display: inline-block;
-    height: 33px;
-    width: 33px;
-    background-image: url("images/ig-icon.png");
-    margin-right: 7px;
-    background-size: cover;
-    vertical-align: middle;
+  content: "";
+  display: inline-block;
+  height: 33px;
+  width: 33px;
+  background-image: url("images/ig-icon.png");
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
 }
 
 .github:before {
-    content: "";
-    display: inline-block;
-    height: 33px;
-    width: 33px;
-    background-image: url("images/github-icon.png");
-    margin-right: 7px;
-    background-size: cover;
-    vertical-align: middle;
+  content: "";
+  display: inline-block;
+  height: 33px;
+  width: 33px;
+  background-image: url("images/github-icon.png");
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
 }
 
 article .intro {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 40%;
+}
+
+section {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.center {
+  margin: 0 auto;
 }

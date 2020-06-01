@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+
+.tableCSS {
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+.tableCSS table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+.tableCSS thead th:nth-child(1) {
+  width: 30%;
+}
+
+.tableCSS thead th:nth-child(2) {
+  width: 20%;
+}
+
+.tableCSS thead th:nth-child(3) {
+  width: 15%;
+}
+
+.tableCSS thead th:nth-child(4) {
+  width: 35%;
+}
+
+.tableCSS th,
+.tableCSS td {
+  padding: 20px 25px;
+  border: 3px solid;
+}
+
+.tableCSS th {
+    letter-spacing: 2px;
+}
+
+.tableCSS td {
+    letter-spacing: 1px;
+}
+
+.tableCSS thead,
+.tableCSS tfoot {
+   font-family: 'Rock Salt', cursive;;
+}
+
+.tableCSS tbody td {
+    text-align: center;
+}
+
+.tableCSS tfoot th {
+    text-align: right;
+}
