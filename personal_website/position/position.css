@@ -1,0 +1,59 @@
+section {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: dotted gray;
+    width: 60%;
+}
+
+.relative {
+    height: 350px
+    
+}
+
+.org {
+    width: 400px;
+    height: 200px;
+
+    min-width: 200px;
+    min-height: 50px;
+
+    margin: 0 auto;
+    background-color: green;
+
+    border: blue 5px solid;
+}
+
+.inside {
+    width: 400px;
+    height: 200px;
+
+    background-color: yellow;
+    border: red 5px solid;
+}
+
+.relativePos {
+    position: relative;
+    top: 100px;
+    left: 70px;
+    z-index: -1;
+}
+
+.absolutePos {
+    position: absolute;
+    top: 100px;
+    left: 70px;
+}
+
+.fixed {
+    position: fixed;
+    top: 100px;
+    left: 70px;
+}
+
+.sticky {
+    position: sticky;
+    top: 200px;
+    /* left: 200px; */
+}
+
+
