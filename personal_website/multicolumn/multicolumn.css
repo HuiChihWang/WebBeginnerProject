@@ -1,0 +1,42 @@
+.simple {
+  width: 1000px;
+  border: solid;
+  margin: 0 auto;
+  column-width: 300px;
+  column-gap: 30px;
+  column-rule: 4px dotted rgb(79, 185, 227);
+}
+
+.simple p:nth-of-type(1) {
+  color: red;
+}
+
+.columnSpan {
+  width: 1000px;
+  border: solid;
+  margin: 0 auto;
+  column-width: 300px;
+  column-gap: 30px;
+  column-rule: 4px dotted rgb(79, 185, 227);
+}
+
+.columnSpan p:nth-of-type(1) {
+  column-span: all;
+  background-color: darkorange;
+}
+
+.fragment {
+  column-count: 2;
+  margin: 0 auto;
+  column-gap: 40px;
+
+}
+
+.fragment .card {
+    background-color: rgb(207, 232, 220);
+    border: 2px solid rgb(79, 185, 227);
+    padding: 10px;
+    margin: 0 0 1em 0;
+    break-inside: avoid;
+    
+}
