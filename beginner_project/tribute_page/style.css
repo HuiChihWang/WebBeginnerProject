@@ -1,39 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Dancing+Script:wght@600&family=Parisienne&family=Yanone+Kaffeesatz&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Dancing+Script:wght@600&family=Parisienne&family=Yanone+Kaffeesatz&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Libre+Baskerville:wght@700&family=Tenali+Ramakrishna&display=swap');
+
 body {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
 
 .mainHeader {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
+
 .banner {
-    background-image: url('images/kobe.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 70%;
-    height: 25rem;
-    margin: 0 auto;
-    
+  background-image: url("images/kobe.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 70%;
+  height: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3em;
 }
 
 .title {
-    font-family: 'Bree Serif', serif;
-    font-size: 5rem;
-    text-align: center;
-    margin: 0 auto;
+  font-family: "Bree Serif", serif;
+  font-size: 5rem;
+  text-align: center;
+  margin: 0.2em auto;
 }
 
 .subTitle {
-    font-family: 'Yanone Kaffeesatz', sans-serif;
-    font-size: 2rem;
-    text-align: center;
-    margin: 0 auto;
+  font-family: "Yanone Kaffeesatz", sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0.2em auto;
 }
 
 .slogan {
-    font-family: 'Parisienne', cursive;
-    font-size: 1.5rem;
-    text-align: center;
+  font-family: "Parisienne", cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.contentContainer{ 
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+.timeLine {
+    flex:3;
+    /* border: white 1px solid; */
+    margin-right: 1.5em;
+}
+
+
+.career {
+    flex: 1;
+    margin-left: 1.5em;
+    border: white 1px solid;
+}
+
+.timeLine .title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 3em;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+}
+
+.timeLineContent {
+    display: grid;
+    /* grid-template-rows: repeat(1fr, 11); */
+    grid-auto-rows: auto;
+}
+.timeLineContent .event {
+    border-bottom: pink solid 1px;
+}
+
+#firstEvent {
+    border-top: pink solid 1px;
+}
+
+.event {
+    display: flex;
+    flex-direction: row nowrap;
+}
+
+.event .date {
+flex: 1;
+text-align: center;
+border-right: pink solid 1px;
+
+}
+
+.event .description {
+    flex: 2;
+    background-color: #313334;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+}
+
+.date {
+    font-family: 'Tenali Ramakrishna', sans-serif;
+    font-size: 1.5em;
 }
