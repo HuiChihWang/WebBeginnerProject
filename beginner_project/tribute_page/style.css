@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Dancing+Script:wght@600&family=Parisienne&family=Yanone+Kaffeesatz&display=swap');
+body {
+    background: black;
+    color: white;
+}
+
+.mainHeader {
+    margin-bottom: 2rem;
+}
+.banner {
+    background-image: url('images/kobe.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70%;
+    height: 25rem;
+    margin: 0 auto;
+    
+}
+
+.title {
+    font-family: 'Bree Serif', serif;
+    font-size: 5rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.subTitle {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.slogan {
+    font-family: 'Parisienne', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+}
