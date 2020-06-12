@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <title>Basketball Camp Survey</title>
   </head>
   <body>
@@ -24,7 +25,6 @@
 
       <div>
         <label for="birthday">Birthday</label>
-
         <input
           type="date"
           id="birthday"
@@ -33,6 +33,120 @@
           min="1940-01-01"
           max="2020-12-31"
         />
+      </div>
+
+      <div>
+        <label for="id">ID Number</label>
+        <input type="text" id="id" required />
+      </div>
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" required />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          pattern=".+@globex.com"
+          size="30"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="location">Choose Your Location</label>
+        <select name="Location" id="location">
+          <option value="Taipei">Taipei</option>
+          <option value="Hsinchu">Hsinchu</option>
+          <option value="Taichung">Taichung</option>
+          <option value="Tainan">Tainan</option>
+          <option value="Kaohsiung">Kaohsiung</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="level">Choose Your Level</label>
+
+        <ul id="level" style="list-style: none;">
+          <li>
+            <label>
+              Beginner
+              <input type="radio" value="beginner" />
+            </label>
+          </li>
+          <li>
+            <label>
+              Medium
+              <input type="radio" value="medium" />
+            </label>
+          </li>
+          <li>
+            <label>
+              Advanced
+              <input type="radio" value="advanced" />
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div>
+          <label for="time">
+            What's your available time
+          </label>
+        </div>
+        <div>
+          <ul id="time" style="list-style: none;">
+            <li>
+              <label>
+                <input value="1" type="checkbox" />
+                10:~12:00
+              </label>
+            </li>
+            <li>
+              <label>
+                <input value="2" type="checkbox" />
+                13:00~15:00
+              </label>
+            </li>
+            <li>
+              <label>
+                <input value="3" type="checkbox" />
+                15:00~17:00
+              </label>
+            </li>
+            <li>
+              <label>
+                <input value="4" type="checkbox" />
+                17:00~19:00
+              </label>
+            </li>
+            <li>
+              <label>
+                <input value="5" type="checkbox" />
+                19:00~21:00
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+          <label for="something"> Tell us about the basketball!</label>
+          <textarea
+            id="something"
+            style="
+              height: 50px;
+              resize: vertical;
+              font-family: Open Sans Condensed;
+            "
+            name="event-details"
+            cols="1"
+            rows="10"
+            placeholder="Enter your experience here..."
+          ></textarea>
       </div>
 
       <button type="submit">Send</button>
