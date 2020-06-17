@@ -7,133 +7,140 @@
     <title>Basketball Camp Survey</title>
   </head>
   <body>
-    <form action="" method="POST">
-      <div>
-        <label for="name">Name: </label>
-        <input type="text" id="name" name="user_name" required />
-      </div>
+    <div class="title">NBA Basketball Asia Camp</div>
+    <div class="form-region">
+      <div class="description">Please Fill the Following Information</div>
 
-      <div>
-        <p>Gender</p>
-
-        <input type="radio" id="gender" name="gender" value="male" />
-        <label for="gender">Male</label>
-
-        <input type="radio" id="gender" name="gender" value="female" />
-        <label for="gender">Female</label>
-      </div>
-
-      <div>
-        <label for="birthday">Birthday</label>
-        <input
-          type="date"
-          id="birthday"
-          name="birthday"
-          value="2000-01-01"
-          min="1940-01-01"
-          max="2020-12-31"
-        />
-      </div>
-
-      <div>
-        <label for="id">ID Number</label>
-        <input type="text" id="id" required />
-      </div>
-      <div>
-        <label for="phone">Phone Number</label>
-        <input type="text" id="phone" required />
-      </div>
-
-      <div>
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          pattern=".+@globex.com"
-          size="30"
-          required
-        />
-      </div>
-
-      <div>
-        <label for="location">Choose Your Location</label>
-        <select name="Location" id="location">
-          <option value="Taipei">Taipei</option>
-          <option value="Hsinchu">Hsinchu</option>
-          <option value="Taichung">Taichung</option>
-          <option value="Tainan">Tainan</option>
-          <option value="Kaohsiung">Kaohsiung</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="level">Choose Your Level</label>
-
-        <ul id="level" style="list-style: none;">
-          <li>
-            <label>
-              Beginner
-              <input type="radio" value="beginner" />
-            </label>
-          </li>
-          <li>
-            <label>
-              Medium
-              <input type="radio" value="medium" />
-            </label>
-          </li>
-          <li>
-            <label>
-              Advanced
-              <input type="radio" value="advanced" />
-            </label>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <div>
-          <label for="time">
-            What's your available time
-          </label>
+      <form action="" method="POST">
+        <div class="row">
+          <label for="name" class="front">Name</label>
+          <input class="back" type="text" id="name" name="user_name" required />
         </div>
-        <div>
-          <ul id="time" style="list-style: none;">
+
+        <div class="row">
+          <div class="front">Gender</div>
+
+          <div class="back">
+            <input type="radio" id="gender" name="gender" value="male" />
+            <label for="gender">Male</label>
+
+            <input type="radio" id="gender" name="gender" value="female" />
+            <label for="gender">Female</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="birthday" class="front">Birthday</label>
+          <input class="back"
+            type="date"
+            id="birthday"
+            name="birthday"
+            value="2000-01-01"
+            min="1940-01-01"
+            max="2020-12-31"
+          />
+        </div>
+
+        <div class="row">
+          <label for="id" class="front">ID Number</label>
+          <input class="back" type="text" id="id" required />
+        </div>
+
+        <div class="row">
+          <label for="phone" class="front">Phone Number</label>
+          <input class="back" type="text" id="phone" required />
+        </div>
+
+        <div class="row">
+          <label for="email" class="front">Email</label>
+          <input class="back"
+            type="email"
+            id="email"
+            pattern=".+@globex.com"
+            size="30"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <label for="location" class="front">Choose Your Location</label>
+          <select name="Location" id="location" class="back">
+            <option value="Taipei">Taipei</option>
+            <option value="Hsinchu">Hsinchu</option>
+            <option value="Taichung">Taichung</option>
+            <option value="Tainan">Tainan</option>
+            <option value="Kaohsiung">Kaohsiung</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label for="level" class="front">Choose Your Level</label>
+
+          <ul id="level" style="list-style: none;" class="back">
             <li>
               <label>
-                <input value="1" type="checkbox" />
-                10:~12:00
+                Beginner
+                <input type="radio" value="beginner" />
               </label>
             </li>
             <li>
               <label>
-                <input value="2" type="checkbox" />
-                13:00~15:00
+                Medium
+                <input type="radio" value="medium" />
               </label>
             </li>
             <li>
               <label>
-                <input value="3" type="checkbox" />
-                15:00~17:00
-              </label>
-            </li>
-            <li>
-              <label>
-                <input value="4" type="checkbox" />
-                17:00~19:00
-              </label>
-            </li>
-            <li>
-              <label>
-                <input value="5" type="checkbox" />
-                19:00~21:00
+                Advanced
+                <input type="radio" value="advanced" />
               </label>
             </li>
           </ul>
         </div>
-      </div>
 
-      <div>
+        <div class="row">
+          <div class="front">
+            <label for="time">
+              What's your available time
+            </label>
+          </div>
+          <div class="back">
+            <ul id="time" style="list-style: none;">
+              <li>
+                <label>
+                  <input value="1" type="checkbox" />
+                  10:~12:00
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input value="2" type="checkbox" />
+                  13:00~15:00
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input value="3" type="checkbox" />
+                  15:00~17:00
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input value="4" type="checkbox" />
+                  17:00~19:00
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input value="5" type="checkbox" />
+                  19:00~21:00
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
           <label for="something"> Tell us about the basketball!</label>
           <textarea
             id="something"
@@ -147,9 +154,10 @@
             rows="10"
             placeholder="Enter your experience here..."
           ></textarea>
-      </div>
+        </div>
 
-      <button type="submit">Send</button>
-    </form>
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </body>
 </html>

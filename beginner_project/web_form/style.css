@@ -1,0 +1,47 @@
+body {
+    background: wheat;
+    background-size: cover;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 5rem;
+}
+
+.form-region {
+    background: white;
+    border-radius: 3rem;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1.5em;
+    margin-top: 3rem;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.7em;
+    margin-bottom: 1em;
+}
+
+form {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.front {
+flex: 1;
+}
+
+.back {
+flex: 1;
+}
