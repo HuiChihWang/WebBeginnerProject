@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Merienda&family=Sacramento&family=Saira+Extra+Condensed:wght@300&family=Satisfy&display=swap');
+
+.world-map {
+    background-image: url(./img/worldmap.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40%;
+    height: 16rem;
+    margin: 0 auto;
+    border: 1px solid;
+    
+}
+
+.article {
+    width: 50%;
+    margin: 0 auto;
+}
+header .title {
+    font-family: 'Satisfy', cursive;
+    font-size: 3em;
+    text-align: center;
+}
+
+header .sub-title {
+    font-family: 'Sacramento', cursive;
+    font-size: 2em;
+    text-align: center;
+}
+
+.article h1 {
+    font-family: 'Merienda', cursive;
+    font-size: 2em;
+    text-align: center;
+}
+
+.article p {
+    font-family: 'Saira Extra Condensed', sans-serif;
+    font-size: 1.2em;
+}
