@@ -31,7 +31,8 @@
 
         <div class="row">
           <label for="birthday" class="front">Birthday</label>
-          <input class="back"
+          <input
+            class="back"
             type="date"
             id="birthday"
             name="birthday"
@@ -53,11 +54,11 @@
 
         <div class="row">
           <label for="email" class="front">Email</label>
-          <input class="back"
+          <input
+            class="back"
             type="email"
             id="email"
             pattern=".+@globex.com"
-            size="30"
             required
           />
         </div>
@@ -74,25 +75,26 @@
         </div>
 
         <div class="row">
-          <label for="level" class="front">Choose Your Level</label>
-
-          <ul id="level" style="list-style: none;" class="back">
+          <div class="front">Choose Your Level</div>
+          <ul class="back option-list">
             <li>
-              <label>
+              <input type="radio" id="beginner" name="level" value="beginner" />
+              <label for="beginner">
                 Beginner
-                <input type="radio" value="beginner" />
               </label>
             </li>
+
             <li>
-              <label>
+              <input type="radio" id="medium" name="level" value="medium" />
+              <label for="medium">
                 Medium
-                <input type="radio" value="medium" />
               </label>
             </li>
+
             <li>
-              <label>
+              <input type="radio" id="advanced" name="level" value="advanced" />
+              <label for="advanced">
                 Advanced
-                <input type="radio" value="advanced" />
               </label>
             </li>
           </ul>
@@ -105,7 +107,7 @@
             </label>
           </div>
           <div class="back">
-            <ul id="time" style="list-style: none;">
+            <ul id="time" class="option-list column-wise">
               <li>
                 <label>
                   <input value="1" type="checkbox" />
@@ -140,8 +142,8 @@
           </div>
         </div>
 
-        <div>
-          <label for="something"> Tell us about the basketball!</label>
+        <div class="row">
+          <label for="something front" class="front"> Tell us about the basketball!</label><br>
           <textarea
             id="something"
             style="
@@ -153,6 +155,7 @@
             cols="1"
             rows="10"
             placeholder="Enter your experience here..."
+            class="back text-input"
           ></textarea>
         </div>
 
