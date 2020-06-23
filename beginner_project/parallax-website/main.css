@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Merienda&family=Sacramento&family=Saira+Extra+Condensed:wght@300&family=Satisfy&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 .world-map {
     background-image: url(./img/worldmap.png);
     background-size: contain;
@@ -28,7 +32,7 @@ header .sub-title {
     text-align: center;
 }
 
-.article h1 {
+h1 {
     font-family: 'Merienda', cursive;
     font-size: 2em;
     text-align: center;
@@ -38,3 +42,59 @@ header .sub-title {
     font-family: 'Saira Extra Condensed', sans-serif;
     font-size: 1.2em;
 }
+
+.score-chart {
+    width: 50%;
+    height: 25em;
+    margin: 0 auto;
+    /* border: solid 1px; */
+    display: flex;  
+    flex-flow: column nowrap; 
+    justify-content: space-between;
+}
+
+.hist {
+    /* border: red solid 1px; */
+    flex: 1;
+}
+
+.hist-title {
+    margin: 0.2em;
+}
+
+.hist-data {
+    height: 40%;
+    display: flex;
+    background-color: wheat;
+}
+
+.score {
+    background-color: #616161;
+    height: 100%; 
+    text-align: right;
+}
+
+.score p {
+    margin-right: 0.6em;
+    margin-top:1.5%;
+    margin-bottom: 0;
+}
+.taiwan .score {
+    width: 100%;
+}
+.bangkok .score {
+    width:90%;
+}
+
+.sydney .score {
+    width:70%;
+}
+
+.osaka .score {
+    width:85%;
+}
+
+.seoul .score {
+    width:80%;
+}
+
