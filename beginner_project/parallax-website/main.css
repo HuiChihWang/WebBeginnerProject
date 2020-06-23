@@ -1,126 +1,221 @@
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Merienda&family=Sacramento&family=Saira+Extra+Condensed:wght@300&family=Satisfy&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Merienda&family=Sacramento&family=Saira+Extra+Condensed:wght@300&family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Seaweed+Script&display=swap");
 @font-face {
-    font-family: 'eraser';
-    src: url('font/EraserRegular.ttf') format('truetype')
+  font-family: "eraser";
+  src: url("font/EraserRegular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'foolish';
-    src: url('font/foolishpeopleDEMO.otf')
+  font-family: "foolish";
+  src: url("font/foolishpeopleDEMO.otf");
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+header {
+  height: 60vh;
+  background-image: url(./img/travel.jpg);
+  background-size: cover;
+  text-align: center;
 }
 
 .world-map {
-    background-image: url(./img/worldmap.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 40%;
-    height: 16rem;
-    margin: 0 auto;
-    border: 1px solid;
-    
+  display: inline-block;
+  background-image: url(./img/worldmap.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+
+  margin-top: 5%;
+  /* position: relative;
+    top:20% */
 }
 
 .article {
-    width: 50%;
-    margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
 }
 header .title {
-    font-family: 'Satisfy', cursive;
-    font-size: 3em;
-    text-align: center;
+  font-family: "Satisfy", cursive;
+  font-size: 3em;
+  text-align: center;
+  margin-top: 2%;
 }
 
 header .sub-title {
-    font-family: 'Sacramento', cursive;
-    font-size: 2em;
-    text-align: center;
+  font-family: "Sacramento", cursive;
+  font-size: 2em;
+  text-align: center;
 }
 
 h1 {
-    font-family: 'Merienda', cursive;
-    font-size: 2em;
-    text-align: center;
+  font-family: "Merienda", cursive;
+  font-size: 2.4em;
+  text-align: center;
 }
 
 .article p {
-    font-family: 'Saira Extra Condensed', sans-serif;
-    font-size: 1.2em;
+  font-family: "Saira Extra Condensed", sans-serif;
+  font-size: 1.6em;
 }
 
 .score-board {
-    background-image: url(./img/texture/blackboard.jpg);
-    padding-top: 2em;
-    padding-bottom: 2em;
+  background-image: url(./img/texture/blackboard.jpg);
+  padding-top: 2em;
+  padding-bottom: 2em;
+  height: 37rem;
 }
 
 .score-board h1 {
-    font-family: 'eraser';
-    color: whitesmoke;
-    font-size: 3em;
-    margin: 0;
+  font-family: "eraser";
+  color: whitesmoke;
+  font-size: 3em;
+  margin: 0;
 }
 
 .score-chart {
-    width: 50%;
-    height: 25em;
-    margin: 0 auto;
-    /* border: solid 1px; */
-    display: flex;  
-    flex-flow: column nowrap; 
-    justify-content: space-between;
+  width: 50%;
+  height: 25em;
+  margin: 0 auto;
+  /* border: solid 1px; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
 }
 
 .hist {
-    /* border: red solid 1px; */
-    flex: 1;
+  /* border: red solid 1px; */
+  flex: 1;
+  margin-bottom: 1em;
 }
 
 .hist-title {
-    margin: 0.2em;
-    font-family: 'foolish';
-    font-size: 2em;
-    color: whitesmoke;
+  margin: 0.2em;
+  font-family: "foolish";
+  font-size: 2em;
+  color: whitesmoke;
 }
 
 .hist-data {
-    height: 40%;
-    display: flex;
-    background-color: wheat;
+  height: 40%;
+  background: url("img/texture/red-crayon.jpg");
+  border-radius: 5px;
 }
 
 .score {
-    background-color: #616161;
-    height: 100%; 
-    text-align: right;
+  /* background-color: #616161; */
+  background: url("img/texture/yellow-crayon.jpg");
+  height: 100%;
+  text-align: right;
+  overflow: hidden;
+  border-radius: 5px;
 }
 
 .score p {
-    margin-right: 0.6em;
-    margin-top:1.5%;
-    margin-bottom: 0;
+  margin-right: 0.6em;
+  margin-top: 1.2%;
+  margin-bottom: 0;
+  font-family: "Seaweed Script", cursive;
+  font-size: 1em;
+  color: #3d93ff;
 }
 .taiwan .score {
-    width: 100%;
+  width: 100%;
 }
 .bangkok .score {
-    width:90%;
+  width: 90%;
 }
 
 .sydney .score {
-    width:70%;
+  width: 70%;
 }
 
 .osaka .score {
-    width:85%;
+  width: 85%;
 }
 
 .seoul .score {
-    width:80%;
+  width: 80%;
 }
 
+.taiwan .hist-title::before {
+  content: "";
+  background-image: url("./img/flag/taiwan.png");
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.seoul .hist-title::before {
+  content: "";
+  background-image: url("./img/flag/korea.png");
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.bangkok .hist-title::before {
+  content: "";
+  background-image: url("./img/flag/thailand.png");
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.sydney .hist-title::before {
+  content: "";
+  background-image: url("./img/flag/australia.png");
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.osaka .hist-title::before {
+  content: "";
+  background-image: url("./img/flag/japan.png");
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  margin-right: 7px;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+.img {
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.osaka {
+  background-image: url("./img/location/osaka.jpg");
+}
+
+.bangkok {
+  background-image: url("./img/location/bangkok.jpg");
+}
+
+.seoul {
+  background-image: url("./img/location/seoul.jpg");
+}
+
+.sydney {
+  background-image: url("./img/location/sydney.jpg");
+}
