@@ -44,7 +44,7 @@ header .sub-title {
 
 .funny-score {
   height: 80vh;
-  background-image: url('../img/location/gold_coast.jpg');
+  background-image: url('../img/texture/wood.jpg');
 }
 .score-board {
   position: relative;
@@ -53,7 +53,7 @@ header .sub-title {
   margin: 0 auto;
   border: solid 1.5em #954535;
   padding-top: 2em;
-  height: 70vh;
+  height: 90%;
 }
 .score-board h1 {
   font-family: "eraser";
