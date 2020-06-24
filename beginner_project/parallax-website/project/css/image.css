@@ -1,0 +1,111 @@
+.osaka-bg {
+    background-image: url("../img/location/osaka.jpg");
+  }
+  
+  .bangkok-bg {
+    background-image: url("../img/location/bangkok.jpg");
+  }
+  
+  .seoul-bg {
+    background-image: url("../img/location/seoul.jpg");
+  }
+  
+  .sydney-bg {
+    background-image: url("../img/location/sydney.jpg");
+  }
+
+  .taiwan .hist-title::before {
+    content: "";
+    background-image: url("../img/flag/taiwan.png");
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
+  }
+  
+  .seoul .hist-title::before {
+    content: "";
+    background-image: url("../img/flag/korea.png");
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
+  }
+  
+  .bangkok .hist-title::before {
+    content: "";
+    background-image: url("../img/flag/thailand.png");
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
+  }
+  
+  .sydney .hist-title::before {
+    content: "";
+    background-image: url("../img/flag/australia.png");
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
+  }
+  
+  .osaka .hist-title::before {
+    content: "";
+    background-image: url("../img/flag/japan.png");
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    margin-right: 7px;
+    background-size: cover;
+    vertical-align: middle;
+  }
+
+  .hist-data {
+    height: 40%;
+    background: url("../img/texture/red-crayon.jpg");
+    border-radius: 5px;
+  }
+  
+  .score {
+    /* background-color: #616161; */
+    background: url("../img/texture/yellow-crayon.jpg");
+    height: 100%;
+    text-align: right;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+
+  .score-bg {
+    background-image: url('../img/texture/blackboard.jpg');
+  }
+
+  header {
+    height: 60vh;
+    background-image: url('../img/travel.jpg');
+    background-size: cover;
+    text-align: center;
+  }
+  
+  .world-map {
+    display: inline-block;
+    background-image: url('../img/worldmap.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 50%;
+    margin: 0 auto;
+  
+    margin-top: 5%;
+    /* position: relative;
+      top:20% */
+  }
