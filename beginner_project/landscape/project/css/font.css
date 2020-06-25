@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Homemade+Apple&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Fira+Sans+Condensed:wght@500&family=Open+Sans+Condensed:wght@300&family=Permanent+Marker&display=swap');
+p {
+   font-family: 'Barlow Condensed', sans-serif;
+   font-size: 1.5em;
+}
 
 header h1 {
     font-family: 'Bebas Neue', cursive;
@@ -6,21 +11,34 @@ header h1 {
     text-align: center;
 }
 
-header p {
+header .sub {
     font-family: 'Homemade Apple', cursive;
     font-size: 2em; 
     text-align: center;
+    color:black;
 }
 
 h2 {
 text-align: center;
-font-size: 2em;
+font-size: 2.5em;
+font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 h3 {
     text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2em;
+    color: brown;
+
 }
 
 .job-name {
 text-align: center;
+color: white;
+font-size: 1.5em;
+font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.job-title {
+    color: white;
 }

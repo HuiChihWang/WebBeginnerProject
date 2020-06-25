@@ -14,16 +14,21 @@
 
 #front-end {
     background-image: url('../image/frontend.png');
+    background-color: yellow;
+
 }
 
 #back-end {
     background-image: url('../image/backend.png');
+    background-color: violet;
 }
 
 #full-stack {
     background-image: url('../image/full-stack.png');
+    background-color: skyblue;
 }
 
 #devops {
     background-image: url('../image/devops.png');
+    background-color: pink;
 }
