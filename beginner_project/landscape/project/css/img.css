@@ -1,0 +1,29 @@
+.header-bg {
+    background: url('../image/web_development.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+.job-img {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#front-end {
+    background-image: url('../image/frontend.png');
+}
+
+#back-end {
+    background-image: url('../image/backend.png');
+}
+
+#full-stack {
+    background-image: url('../image/full-stack.png');
+}
+
+#devops {
+    background-image: url('../image/devops.png');
+}
