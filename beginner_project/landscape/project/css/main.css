@@ -78,15 +78,15 @@ header h1 {
 .skill-grid {
     display: grid;
     width: 80%;
-    border: solid 1px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     margin: 0 auto;
+    gap: 2em;
 }
 
 .skill-item {
-    border: solid 1px;
-    border-radius: 10px;
+    border: double 3px skyblue;
+    border-radius: 20px;
 }
 
 
@@ -102,16 +102,16 @@ header h1 {
 
 .skill-list {
     display: grid;
-    border: solid 1px red;
-    /* grid-template-columns: repeat(3, 1fr); */
     grid-template-rows: 3fr 1fr;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
+    padding: 1em 0.7em;
 }
 
-.skill-list div {
-    border: green solid 1px;
+.skill-name {
+    margin-top: 5px;
 }
+
 
 
 

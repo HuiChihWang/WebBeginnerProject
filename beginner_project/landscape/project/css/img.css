@@ -1,85 +1,83 @@
 .header-bg {
-    background: url('../image/web_development.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.7;
+  background: url("../image/web_development.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.7;
 }
 
 .job-img {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 #front-end {
-    background-image: url('../image/frontend.png');
-    background-color: yellow;
-
+  background-image: url("../image/jobs/frontend.png");
+  background-color: yellow;
 }
 
 #back-end {
-    background-image: url('../image/backend.png');
-    background-color: violet;
+  background-image: url("../image/jobs/backend.png");
+  background-color: violet;
 }
 
 #full-stack {
-    background-image: url('../image/full-stack.png');
-    background-color: skyblue;
+  background-image: url("../image/jobs/full-stack.png");
+  background-color: skyblue;
 }
 
 #devops {
-    background-image: url('../image/devops.png');
-    background-color: pink;
+  background-image: url("../image/jobs/devops.png");
+  background-color: pink;
 }
 
 #database {
-background-image: url('../image/skill/back-end/database.png');
+  background-image: url("../image/skill/back-end/database.png");
 }
 
 #nodejs {
-    background-image: url('../image/skill/back-end/nodejs.png');
+  background-image: url("../image/skill/back-end/nodejs.png");
 }
 
 #os {
-background-image: url('../image/skill/back-end/os.png');
+  background-image: url("../image/skill/back-end/os.png");
 }
 
 #html {
-background-image: url('../image/skill/front-end/html.png');
+  background-image: url("../image/skill/front-end/html.png");
 }
 
 #css {
-background-image: url('../image/skill/front-end/css.png');
+  background-image: url("../image/skill/front-end/css.png");
 }
 
-#react{
-background-image: url('../image/skill/front-end/react.png');
+#react {
+  background-image: url("../image/skill/front-end/react.png");
 }
 
 #git {
-    background-image: url('../image/skill/common/git.png');
+  background-image: url("../image/skill/common/git.png");
 }
 
 #js {
-    background-image: url('../image/skill/common/js.png');
+  background-image: url("../image/skill/common/js.png");
 }
 
 #terminal {
-    background-image: url('../image/skill/common/terminal.png');
+  background-image: url("../image/skill/common/terminal.png");
 }
 
 #datastructure {
-    background-image: url('../image/skill/common/data-structure.png');
+  background-image: url("../image/skill/common/data-structure.png");
 }
 
 #algorithm {
-    background-image: url('../image/skill/common/algorithm.png');
+  background-image: url("../image/skill/common/algorithm.png");
 }
 
 .skill-img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-
