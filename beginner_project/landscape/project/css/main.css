@@ -1,5 +1,5 @@
 header {
-    height:48vh;
+    height:50vh;
     width: 100%;
     text-align: center;
 
@@ -8,7 +8,7 @@ header {
 .header-bg {
     /* display: inline-block; */
     width: 100%;
-    height: 500px;
+    height: 50vh;
     position: absolute;
     left: 0;
     top: 0;
@@ -22,7 +22,6 @@ header h1 {
 }
 
 .intro {
-
     margin: 0 auto;
 }
 
@@ -53,8 +52,8 @@ header h1 {
 }
 
  /* for debug */
-.jobs-flex div {
-    border: 1px solid;
+.job-img, .job-name {
+    border: 3px white solid;
 }
 
 .job {
@@ -73,7 +72,51 @@ header h1 {
 .job-name {
     margin: 10px auto;
     width: 90%;
+    background-color: tomato;
 }
+
+.skill-grid {
+    display: grid;
+    width: 80%;
+    border: solid 1px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    margin: 0 auto;
+}
+
+.skill-item {
+    border: solid 1px;
+    border-radius: 10px;
+}
+
+
+#common-skill {
+    grid-column: 1 / 3;
+}
+
+.skill-img {
+    width: 8em;
+    height: 8em;
+    margin: 0 auto;
+}
+
+.skill-list {
+    display: grid;
+    border: solid 1px red;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-rows: 3fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+}
+
+.skill-list div {
+    border: green solid 1px;
+}
+
+
+
+
+
 
 
 

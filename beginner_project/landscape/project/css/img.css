@@ -32,3 +32,54 @@
     background-image: url('../image/devops.png');
     background-color: pink;
 }
+
+#database {
+background-image: url('../image/skill/back-end/database.png');
+}
+
+#nodejs {
+    background-image: url('../image/skill/back-end/nodejs.png');
+}
+
+#os {
+background-image: url('../image/skill/back-end/os.png');
+}
+
+#html {
+background-image: url('../image/skill/front-end/html.png');
+}
+
+#css {
+background-image: url('../image/skill/front-end/css.png');
+}
+
+#react{
+background-image: url('../image/skill/front-end/react.png');
+}
+
+#git {
+    background-image: url('../image/skill/common/git.png');
+}
+
+#js {
+    background-image: url('../image/skill/common/js.png');
+}
+
+#terminal {
+    background-image: url('../image/skill/common/terminal.png');
+}
+
+#datastructure {
+    background-image: url('../image/skill/common/data-structure.png');
+}
+
+#algorithm {
+    background-image: url('../image/skill/common/algorithm.png');
+}
+
+.skill-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
