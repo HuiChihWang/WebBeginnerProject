@@ -38,10 +38,10 @@ header h1 {
 }
 
 .jobs {
-    background-color: black;
+    background-color: #333333;
     margin-top: 1em;
-    padding-top: 1em;
-    padding-bottom: 2em;
+    padding-top: 2em;
+    padding-bottom: 5em;
 }
 
 .jobs-flex {
@@ -80,7 +80,7 @@ header h1 {
     width: 80%;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
-    margin: 0 auto;
+    margin: 3em auto;
     gap: 2em;
 }
 
@@ -111,6 +111,97 @@ header h1 {
 .skill-name {
     margin-top: 5px;
 }
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+
+#contact {
+    background-color: #660000;
+}
+
+/* #resource {
+    background-color: #004de6;
+} */
+
+#social {
+    background-color: black;
+    grid-column: 1 / span 2;
+    text-align: center;
+    height: 8vh;
+}
+
+.social-tag {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    margin: 0 0.5em;
+}
+
+h4 {
+    margin: 1em 0;
+}
+.person-flex {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1em;
+    margin-top: -1.5em;
+}
+
+.img-flex {
+    flex:2;
+   margin: 0 1em;
+}
+
+.v-center {
+    position: relative;
+     top: 50%; 
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); 
+}
+#person-img {
+    width:13em;
+    height: 13em;
+    margin:0 auto;
+}
+
+.resource-grid {
+    display: grid;
+    width: 90%;
+    height: 50%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 5em;
+}
+
+.link-flex {
+    display: flex;
+    width: 100%;
+}
+
+.resource-img {
+    flex:2;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.web-name {
+    flex: 3;
+    margin-top: 6%;
+    margin-left: 0.3em;
+}
+
+#location {
+    width: 70%;
+    margin: 0 auto;
+}
+
 
 
 

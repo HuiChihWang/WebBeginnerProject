@@ -76,8 +76,63 @@
   background-image: url("../image/skill/common/algorithm.png");
 }
 
+#fb {
+    background-image: url('../image/social/fb.png');
+}
+#ig {
+    background-image: url('../image/social/ig.png');
+}
+
+#linkedin {
+    background-image: url('../image/social/linkedin.png');
+}
+
+#github {
+    background-image: url('../image/social/github.png');
+}
+
+#person-img {
+    background-image: url('../image/person.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+#coursera {
+    background-image: url('../image/resource/coursera.png');
+}
+
+#edx {
+    background-image: url('../image/resource/edX.png');
+}
+
+#udacity {
+    background-image: url('../image/resource/udacity.png');
+}
+
+#udemy {
+    background-image: url('../image/resource/udemy.png');
+}
+
+#resource{
+    background-image: url('../image/blackboard.jpg');
+}
+.social-tag {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .skill-img {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
+
+.resource-img {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 10;
+  }
