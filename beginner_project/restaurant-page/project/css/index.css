@@ -1,0 +1,71 @@
+header {
+    height: 80vh;
+}
+
+main {
+    background-color: black;
+    color: white;
+}
+
+.header-img {
+    width: 100%;
+    height: 80vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.h-center {
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
+nav div{
+    flex: 1;
+}
+
+#main-nav {
+    width:50vw;
+}
+#dish-nav {
+    width: 50vw;
+}
+
+
+
+
+
+
+.menu-grid {
+    display: grid;
+    width: 1000px;
+    height: 80vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, 80vh);
+}
+
+.dish-img {
+    width: 15vw;
+    height: 15vw;
+}
+
+/* debug border */
+.menu-grid {
+    border: 1px solid;
+}
+
+.menu-grid div {
+border: solid 1px red;
+}
+
+.menu-grid div div {
+    border: initial;
+}

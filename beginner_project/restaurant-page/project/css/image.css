@@ -1,0 +1,130 @@
+.dish-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/* header image */
+.header-img {
+background-image: url('../image/header.jpg');
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+}
+
+/* main dish images */
+
+#main-dish .menu-grid div:nth-child(1) .dish-img {
+  background-image: url("../image/food/main/牛肉麵.jpg");
+}
+
+#main-dish .menu-grid div:nth-child(2) .dish-img {
+  background-image: url("../image/food/main/水餃.jpg");
+}
+
+#main-dish .menu-grid div:nth-child(3) .dish-img {
+  background-image: url("../image/food/main/乾麵.jpg");
+}
+
+#main-dish .menu-grid div:nth-child(4) .dish-img {
+  background-image: url("../image/food/main/炒米粉.jpg");
+}
+
+#main-dish .menu-grid div:nth-child(5) .dish-img {
+  background-image: url("../image/food/main/控肉飯.jpg");
+}
+
+#main-dish .menu-grid div:nth-child(6) .dish-img {
+  background-image: url("../image/food/main/肉圓.jpg");
+}
+
+#main-dish .menu-grid div:nth-child(7) .dish-img {
+  background-image: url("../image/food/main/麻醬麵.jpg");
+}
+#main-dish .menu-grid div:nth-child(8) .dish-img {
+    background-image: url("../image/food/main/湯包.jpg");
+  }
+#main-dish .menu-grid div:nth-child(9) .dish-img {
+  background-image: url("../image/food/main/米糕.jpg");
+}
+#main-dish .menu-grid div:nth-child(10) .dish-img {
+  background-image: url("../image/food/main/蚵仔煎.jpg");
+}
+#main-dish .menu-grid div:nth-child(11) .dish-img {
+  background-image: url("../image/food/main/臭豆腐.jpg");
+}
+
+/* side dish image */
+
+#side-dish .menu-grid div:nth-child(1) .dish-img {
+  background-image: url("../image/food/side/燙青菜.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(2) .dish-img {
+  background-image: url("../image/food/side/涼拌黃瓜.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(3) .dish-img {
+  background-image: url("../image/food/side/皮蛋豆腐.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(4) .dish-img {
+  background-image: url("../image/food/side/豬耳朵.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(5) .dish-img {
+  background-image: url("../image/food/side/泡菜.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(6) .dish-img {
+  background-image: url("../image/food/side/滷味.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(7) .dish-img {
+  background-image: url("../image/food/side/豆腐.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(8) .dish-img {
+  background-image: url("../image/food/side/豬肝.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(9) .dish-img {
+  background-image: url("../image/food/side/滷牛腱.jpg");
+}
+
+#side-dish .menu-grid div:nth-child(10) .dish-img {
+  background-image: url("../image/food/side/大腸.jpg");
+}
+
+/* soup & beverage images */
+
+#beverage-soup .menu-grid div:nth-child(1) .dish-img {
+  background-image: url("../image/food/soup/貢丸湯.jpg");
+}
+
+#beverage-soup .menu-grid div:nth-child(2) .dish-img {
+  background-image: url("../image/food/soup/蛋花湯.jpg");
+}
+
+#beverage-soup .menu-grid div:nth-child(3) .dish-img {
+  background-image: url("../image/food/soup/味噌湯.jpg");
+}
+
+#beverage-soup .menu-grid div:nth-child(4) .dish-img {
+  background-image: url("../image/food/soup/酸辣湯.jpg");
+}
+
+#beverage-soup .menu-grid div:nth-child(5) .dish-img {
+  background-image: url("../image/food/soup/豬血湯.jpg");
+}
+
+#beverage-soup .menu-grid div:nth-child(6) .dish-img {
+  background-image: url("../image/food/soup/檸檬愛玉.jpg");
+}
+
+#beverage-soup .menu-grid div:nth-child(7) .dish-img {
+  background-image: url("../image/food/soup/珍奶.jpg");
+}
+
+#beverage-soup .menu-grid div:nth-child(8) .dish-img {
+  background-image: url("../image/food/soup/豆漿.jpg");
+}
