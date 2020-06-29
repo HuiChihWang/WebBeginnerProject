@@ -1,8 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Holtwood+One+SC&display=swap');
+
 #main-nav{
-    font-size: 2em;
+    font-size: 1.5em;
+    font-family: 'Cairo', sans-serif;
+    color: white;
 }
 
 .title-font {
     font-size: 4em;
+    text-align: center;
+    font-family: 'Holtwood One SC', serif;
+    color: rgb(226, 226, 55);  
+    /* background-color:rgba(34, 29, 29, 0.616); */
+}
+
+.button {
+    font-size: 1.5em;
+    font-family: 'Cairo', sans-serif;
     text-align: center;
 }
