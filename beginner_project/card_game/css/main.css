@@ -97,10 +97,35 @@ h1 {
 
 }
 
-.gaming-area {
+.game-area {
   display: flex;
+  height: 70vh;
+  /* width: 100%; */
 }
 
-.gaming-board {
+.game-board {
+  flex-basis: 70%;
+}
+
+.score-board {
+  flex-basis: 30%;
+}
+
+.card-grid {
   display: grid;
+  grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+  gap: 1rem;
+  margin:1rem
+}
+
+
+.flip-down {
+  background-image: url(../image/card/back.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.flip-up {
+  background-position: center;
+  background-size: cover;
 }
