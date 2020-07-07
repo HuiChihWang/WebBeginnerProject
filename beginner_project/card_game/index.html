@@ -8,17 +8,30 @@
   </head>
   <body>
     <header class="header-main">
+      <img src="image/header/nba-logo.png" class="logo">
       <div class="bg-img"></div>
       <div class="text-header">
-        <h1>NBA Card Game</h1>
-        <select name="teams">
-          <option value="spur">Spur</option>
-          <option value="celtics">Celtics</option>
-          <option value="laker">Laker</option>
-          <option value="warriors">Warriors</option>
-        </select>
-        <button>New Game</button>
+        <h1 class="header-primary">NBA Card Game</h1>
+
+        <div class="team-options">
+            <label for="teams" class="team-ask">Select Your Favorite Teams</label>
+          <select name="teams" id="teams" class="team-select">
+            <option value="spur">Spur</option>
+            <option value="celtics">Celtics</option>
+            <option value="laker">Laker</option>
+            <option value="warriors">Warriors</option>
+          </select>
+        </div>
+
+        <button class="new-btn">New Game</button>
       </div>
     </header>
+
+
+
+    <div class="gaming-area"> 
+        <div class="game-board"></div>
+        <div class="score-board"></div>
+    </div>
   </body>
 </html>
