@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fantasy Card Game</title>
     <link rel="stylesheet" href="./css/main.css" />
-    <script src="js/card_game.js"></script>
   </head>
+
   <body>
     <header class="header-main">
-      <img src="image/header/nba-logo.png" class="logo">
+      <img src="image/header/nba-logo.png" class="logo" />
       <div class="bg-img"></div>
       <div class="text-header">
         <h1 class="header-primary">NBA Card Game</h1>
 
         <div class="team-options">
-            <label for="teams" class="team-ask">Select Your Favorite Teams</label>
+          <label for="teams" class="team-ask">Select Your Favorite Teams</label>
           <select name="teams" id="teams" class="team-select">
             <option value="spur">Spur</option>
             <option value="celtics">Celtics</option>
@@ -24,15 +24,19 @@
           </select>
         </div>
 
-        <button class="new-btn">New Game</button>
+        <button class="new-btn" id="button">New Game</button>
       </div>
     </header>
 
+    <div class="gaming-area">
+      <div class="game-board">
+        <div class="flip-down card"></div>
+        <div class="flip-up card"></div>
+      </div>
 
-
-    <div class="gaming-area"> 
-        <div class="game-board"></div>
-        <div class="score-board"></div>
+      <div class="score-board"></div>
     </div>
   </body>
+  <script src="js/card_view_control.js"></script>
+    <!-- <script src="js/card_game.js"></script> -->
 </html>

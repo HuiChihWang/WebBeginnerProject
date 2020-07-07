@@ -96,3 +96,11 @@ h1 {
   background-color: white;
 
 }
+
+.gaming-area {
+  display: flex;
+}
+
+.gaming-board {
+  display: grid;
+}

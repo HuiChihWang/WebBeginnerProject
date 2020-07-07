@@ -83,13 +83,9 @@ let cardGame = (function(numberCards){
                 }
                 _previousChose = null;
             }
-
         },
-
     };
 })(numberCards);
 
-
-cardGame.init();
 
 
