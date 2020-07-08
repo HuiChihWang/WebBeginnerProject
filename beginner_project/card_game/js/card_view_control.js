@@ -104,8 +104,6 @@ class CardViewControl {
             getPureClassName: strClass => strClass.substring(1),
         };
 
-        
-
         this._imageSet = {
             'spur': [
                 'spur-kawhi',
@@ -131,10 +129,6 @@ class CardViewControl {
 
     }
 
-    
-
-
-
     init() {
         let selectValue = document.querySelector(this._DOMString.teamType).value;
         this.createCardGrid();
@@ -150,22 +144,35 @@ class CardViewControl {
     createCardGrid() {
         let gameBoardElement = document.querySelector(this._DOMString.gameBoard);
         gameBoardElement.innerHTML = '';
+        let teamType = document.querySelector(this._DOMString.teamType).value;
+        let cardSet = this._imageSet[teamType]; 
 
+ 
+        
         for (let idx = 0; idx < this._cardNumber; ++idx) {
             let cardElement = this.createCard();
-            // TODO change card set
-            cardElement.classList.add(this._imageSet.spur[Math.floor(idx / 2)]);
-            cardElement.id = 'card-' + idx
-            gameBoardElement.appendChild(cardElement);
             this._gridCards.push(cardElement);
         }
+
+        let setUsedNumber = new Set(Array.from({length: this._cardNumber}, (_, idx)=>idx));
+        this._gridCards.forEach((cardElement)=>{
+            let chooseIdxArray = Array.from(setUsedNumber);
+            let randIdx = Math.floor(Math.random() * chooseIdxArray.length);
+            let randCardIdx = chooseIdxArray[randIdx];
+            setUsedNumber.delete(randCardIdx);
+
+            cardElement.id = 'card-' + randCardIdx;
+            cardElement.classList.add(cardSet[Math.floor(randCardIdx/2)]);
+            gameBoardElement.appendChild(cardElement);
+        });
+
+        console.log(gameBoardElement);
 
     }
 
     flipCard(cardElement) {
         let cardElementClass = cardElement.classList;
         let backgroundClass = this._DOMString.getPureClassName(this._DOMString.cardBackground);
-        console.log(backgroundClass);
 
         if (cardElementClass.contains(backgroundClass)){
             cardElementClass.remove(backgroundClass);
