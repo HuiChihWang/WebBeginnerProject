@@ -120,11 +120,11 @@ h1 {
 
 
 .flip-down {
-  background-image: url(../image/card/back.jpg);
+  background-image: url(../image/card/back.jpg) !important; 
 }
 
 .card {
-  background-position: center;
+  background-position: top;
   background-size: cover;
 }
 

@@ -95,11 +95,13 @@ class CardGame {
 class CardViewControl {
     constructor() {
         this._DOMString = {
-            teamType: 'teams',
+            teamType: '.team-select',
             newButton: '.new-btn',
             card: '.card',
             cardBackground: '.flip-down',
             gameBoard: '.game-board',
+
+            getPureClassName: strClass => strClass.substring(1),
         };
 
         
@@ -109,7 +111,7 @@ class CardViewControl {
                 'spur-kawhi',
                 'spur-tony',
                 'spur-tim',
-                'sput-manu',
+                'spur-manu',
                 'spur-danny',
                 'spur-paty',
                 'spur-bowen',
@@ -134,7 +136,7 @@ class CardViewControl {
 
 
     init() {
-        let selectValue = document.getElementById(this._DOMString.teamType).value;
+        let selectValue = document.querySelector(this._DOMString.teamType).value;
         this.createCardGrid();
     }
 
@@ -151,6 +153,8 @@ class CardViewControl {
 
         for (let idx = 0; idx < this._cardNumber; ++idx) {
             let cardElement = this.createCard();
+            // TODO change card set
+            cardElement.classList.add(this._imageSet.spur[Math.floor(idx / 2)]);
             cardElement.id = 'card-' + idx
             gameBoardElement.appendChild(cardElement);
             this._gridCards.push(cardElement);
@@ -159,15 +163,18 @@ class CardViewControl {
     }
 
     flipCard(cardElement) {
-        let carElementClass = cardElement.classList;
-        let card
-        if (carElementClass.includes(this._DOMString.cardBackground)){
-            carElementClass.remove(this._DOMString.cardBackground);
-            cardElementClass.add();
+        let cardElementClass = cardElement.classList;
+        let backgroundClass = this._DOMString.getPureClassName(this._DOMString.cardBackground);
+        console.log(backgroundClass);
+
+        if (cardElementClass.contains(backgroundClass)){
+            cardElementClass.remove(backgroundClass);
         }
         else {
-
+            cardElementClass.add(backgroundClass);
         }
+
+        console.log(cardElement);
             
     }
 
@@ -203,21 +210,20 @@ class EventHandler {
 
                 // choose card in game control
                 let cardIndex = this.getCardIndexFromElement(cardElement);
-                console.log(cardIndex);
                 gameController.chooseCard(cardIndex);
 
                 //update view
-                cardElement.classList
+                this._viewController.flipCard(cardElement);
             });
         });
     }
 
     setUpNewGameListener() {
         this._viewController.newButtonElement.addEventListener('click', () => {
-
             //init controller 
             this._viewController.init();
             this._gameController.init();
+
             this.setUpCardEvents();
         })
     }
