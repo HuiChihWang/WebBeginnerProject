@@ -37,53 +37,57 @@ class Card {
 class CardGame {
     constructor(numberCards) {
         this._numberCards = numberCards;
-        this._previousChoose = null;
-        this._arrCards = [];
     }
 
-
-
     init() {
-        let indexSet = new Set(Array.from({ length: this._numberCards }, (_, idx) => idx));
-        this._arrCards = Array.from({ length: this._numberCards }, (_, index) => {
+        this._previousChoose = null;
+        this._arrCards = [];
 
-            let indexArr = Array.from(indexSet);
-            let matchIndex = 0;
+        this._pairCards = numberCards / 2;
 
-            do {
-                let randIndex = Math.floor(Math.random() * indexArr.length);
-                matchIndex = indexArr[randIndex];
-            } while (matchIndex === index)
-
-            let newCard = new Card(index, matchIndex);
-            indexSet.delete(matchIndex);
-
-            console.log(`${newCard.index} match with ${newCard.matchIndex}`);
-            return newCard;
-        });
+        for (let pair = 0; pair < this._pairCards; ++pair) {
+            let newCardIndex = pair * 2;
+            let matchIndex = newCardIndex + 1;
+            let newCard = new Card(newCardIndex, matchIndex);
+            let matchCard = new Card(matchIndex, newCardIndex);
+            
+            this._arrCards.push(newCard);
+            this._arrCards.push(matchCard);
+        } 
     }
 
 
     chooseCard(index) {
-        let cardChosen = _arrCards[index];
+        let cardChosen = this._arrCards[index];
 
         //card is first chose
-        if (!cardChosen.isFlipUp && !_previousChose) {
+        if (!cardChosen.isFlipUp && !this._previousChoose) {
+
             cardChosen.isFlipUp = true;
-            _previousChose = cardChosen;
+            this._previousChoose = cardChosen;
+
+            console.log(`[First Choose] choose card ${cardChosen.index}`);
+
         }
 
         // card is second chose
-        else if (!cardChosen.isFlipUp && _previousChose) {
+        else if (!cardChosen.isFlipUp && this._previousChoose) {
+
             cardChosen.isFlipUp = true;
 
-            if (cardChosen.isMatchWith(_previousChose)) {
-                cardChosen.isMatch = _previousChose.isMatch = true;
+            if (cardChosen.isMatchWith(this._previousChoose)) {
+                cardChosen.isMatch = this._previousChoose.isMatch = true;
+                console.log(`[Final Choose] card ${cardChosen.index} match with card ${this._previousChoose.index}`);
             }
             else {
-                cardChosen.isFlipUp = _previousChose.isFlipUp = false;
+                cardChosen.isFlipUp = this._previousChoose.isFlipUp = false;
+                console.log(`[Final Choose] card ${cardChosen.index} fail to match with card ${this._previousChoose.index}`);
             }
-            _previousChose = null;
+            this._previousChoose = null;
+        }
+
+        else {
+            console.log(`[None] Card ${cardChosen.index} is Flip Up`);
         }
     }
 }
@@ -91,11 +95,33 @@ class CardGame {
 class CardViewControl {
     constructor() {
         this._DOMString = {
-            teamType: '#teams',
+            teamType: 'teams',
             newButton: '.new-btn',
             card: '.card',
             cardBackground: '.flip-down',
             gameBoard: '.game-board',
+        };
+
+        
+
+        this._imageSet = {
+            'spur': [
+                'spur-kawhi',
+                'spur-tony',
+                'spur-tim',
+                'sput-manu',
+                'spur-danny',
+                'spur-paty',
+                'spur-bowen',
+                'spur-robinson'
+            ],
+
+            'laker': [],
+
+            'warriors': [],
+
+            'celtics': [],
+
         };
 
         this._cardNumber = 16;
@@ -103,7 +129,12 @@ class CardViewControl {
 
     }
 
+    
+
+
+
     init() {
+        let selectValue = document.getElementById(this._DOMString.teamType).value;
         this.createCardGrid();
     }
 
@@ -127,6 +158,19 @@ class CardViewControl {
 
     }
 
+    flipCard(cardElement) {
+        let carElementClass = cardElement.classList;
+        let card
+        if (carElementClass.includes(this._DOMString.cardBackground)){
+            carElementClass.remove(this._DOMString.cardBackground);
+            cardElementClass.add();
+        }
+        else {
+
+        }
+            
+    }
+
 
     get newButtonElement() {
         return document.querySelector(this._DOMString.newButton);
@@ -147,17 +191,31 @@ class EventHandler {
         this._gameController = gameController;
     }
 
+    getCardIndexFromElement(cardElement) {
+        let strCardIndex = cardElement.id.split('-')[1];
+        return Number(strCardIndex);
+    }
     setUpCardEvents() {
         this._viewController.cardElements.forEach((cardElement, idx) => {
             cardElement.addEventListener('click', () => {
-                //TODO flip card event
+                //TODO click card event
+                console.log(`element with id ${cardElement.id} is clicked.`);
 
+                // choose card in game control
+                let cardIndex = this.getCardIndexFromElement(cardElement);
+                console.log(cardIndex);
+                gameController.chooseCard(cardIndex);
+
+                //update view
+                cardElement.classList
             });
         });
     }
 
     setUpNewGameListener() {
         this._viewController.newButtonElement.addEventListener('click', () => {
+
+            //init controller 
             this._viewController.init();
             this._gameController.init();
             this.setUpCardEvents();
