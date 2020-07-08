@@ -37,7 +37,9 @@ class Card {
 class CardGame {
     constructor(numberCards) {
         this._numberCards = numberCards;
+        this._failMatchIndexes = [];
     }
+
 
     init() {
         this._previousChoose = null;
@@ -56,9 +58,13 @@ class CardGame {
         } 
     }
 
+    get failMatchIndexes() {
+        return this._failMatchIndexes;
+    }
 
     chooseCard(index) {
         let cardChosen = this._arrCards[index];
+        this._failMatchIndexes = [];
 
         //card is first chose
         if (!cardChosen.isFlipUp && !this._previousChoose) {
@@ -81,6 +87,7 @@ class CardGame {
             }
             else {
                 cardChosen.isFlipUp = this._previousChoose.isFlipUp = false;
+                this._failMatchIndexes = [cardChosen.index, this._previousChoose.index];
                 console.log(`[Final Choose] card ${cardChosen.index} fail to match with card ${this._previousChoose.index}`);
             }
             this._previousChoose = null;
@@ -88,7 +95,10 @@ class CardGame {
 
         else {
             console.log(`[None] Card ${cardChosen.index} is Flip Up`);
+            return false;
         }
+
+        return true;
     }
 }
 
@@ -165,9 +175,13 @@ class CardViewControl {
             cardElement.classList.add(cardSet[Math.floor(randCardIdx/2)]);
             gameBoardElement.appendChild(cardElement);
         });
+    }
 
-        console.log(gameBoardElement);
-
+    updateView(arrUpdateCardIndex) {
+        arrUpdateCardIndex.forEach((cardIndex)=>{
+            let cardElement = document.getElementById('card-' + cardIndex);
+            this.flipCard(cardElement);
+        });
     }
 
     flipCard(cardElement) {
@@ -180,9 +194,6 @@ class CardViewControl {
         else {
             cardElementClass.add(backgroundClass);
         }
-
-        console.log(cardElement);
-            
     }
 
 
@@ -194,9 +205,6 @@ class CardViewControl {
         return this._gridCards;
     }
 }
-
-
-
 
 class EventHandler {
 
@@ -210,17 +218,32 @@ class EventHandler {
         return Number(strCardIndex);
     }
     setUpCardEvents() {
-        this._viewController.cardElements.forEach((cardElement, idx) => {
+        console.log(this._viewController.cardElements);
+        this._viewController.cardElements.forEach((cardElement) => {
             cardElement.addEventListener('click', () => {
                 //TODO click card event
                 console.log(`element with id ${cardElement.id} is clicked.`);
 
                 // choose card in game control
                 let cardIndex = this.getCardIndexFromElement(cardElement);
-                gameController.chooseCard(cardIndex);
-
+                let isChooseSucess = gameController.chooseCard(cardIndex);
                 //update view
-                this._viewController.flipCard(cardElement);
+
+                if (isChooseSucess){
+                    console.log('Choose Sucess');
+                    this._viewController.updateView([cardIndex]);
+
+                    if (this._gameController.failMatchIndexes.length > 0){
+                        console.log('match Fail');
+
+                        (function(viewControl, gameConntrol) {
+                            setTimeout(function(){
+                                viewControl.updateView(gameConntrol.failMatchIndexes);
+                            }, 800);
+                        })(this._viewController, this._gameController);
+                    }
+                }
+                
             });
         });
     }
