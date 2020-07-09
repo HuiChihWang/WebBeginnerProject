@@ -66,7 +66,6 @@ class CardGame {
         let cardChosen = this._arrCards[index];
         this._failMatchIndexes = [];
 
-        //card is first chose
         if (!cardChosen.isFlipUp && !this._previousChoose) {
 
             cardChosen.isFlipUp = true;
@@ -76,7 +75,6 @@ class CardGame {
 
         }
 
-        // card is second chose
         else if (!cardChosen.isFlipUp && this._previousChoose) {
 
             cardChosen.isFlipUp = true;
@@ -135,13 +133,18 @@ class CardViewControl {
         };
 
         this._cardNumber = 16;
-        this._gridCards = [];
-
     }
 
     init() {
-        let selectValue = document.querySelector(this._DOMString.teamType).value;
+        this.teamType = document.querySelector(this._DOMString.teamType).value;
+        this.clearCardGrid();
         this.createCardGrid();
+    }
+
+    clearCardGrid() {
+        this._gridCards = [];
+        let gameBoardElement = document.querySelector(this._DOMString.gameBoard);
+        gameBoardElement.querySelectorAll('*').forEach(node=>node.remove());
     }
 
     createCard() {
@@ -153,12 +156,8 @@ class CardViewControl {
 
     createCardGrid() {
         let gameBoardElement = document.querySelector(this._DOMString.gameBoard);
-        gameBoardElement.innerHTML = '';
-        let teamType = document.querySelector(this._DOMString.teamType).value;
-        let cardSet = this._imageSet[teamType]; 
+        let cardSet = this._imageSet[this.teamType]; 
 
- 
-        
         for (let idx = 0; idx < this._cardNumber; ++idx) {
             let cardElement = this.createCard();
             this._gridCards.push(cardElement);
@@ -175,6 +174,8 @@ class CardViewControl {
             cardElement.classList.add(cardSet[Math.floor(randCardIdx/2)]);
             gameBoardElement.appendChild(cardElement);
         });
+
+        console.log(gameBoardElement);
     }
 
     updateView(arrUpdateCardIndex) {
@@ -207,7 +208,6 @@ class CardViewControl {
 }
 
 class EventHandler {
-
     constructor(viewController, gameController) {
         this._viewController = viewController;
         this._gameController = gameController;
@@ -218,17 +218,15 @@ class EventHandler {
         return Number(strCardIndex);
     }
     setUpCardEvents() {
-        console.log(this._viewController.cardElements);
         this._viewController.cardElements.forEach((cardElement) => {
             cardElement.addEventListener('click', () => {
-                //TODO click card event
                 console.log(`element with id ${cardElement.id} is clicked.`);
 
                 // choose card in game control
                 let cardIndex = this.getCardIndexFromElement(cardElement);
                 let isChooseSucess = gameController.chooseCard(cardIndex);
-                //update view
 
+                //update view
                 if (isChooseSucess){
                     console.log('Choose Sucess');
                     this._viewController.updateView([cardIndex]);
