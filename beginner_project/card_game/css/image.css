@@ -142,3 +142,10 @@ background-image: url(../image/card/spur/manu-ginobili.jpg);
 .warriors-looney {
     background-image: url(../image/card/warriors/looney.jpg);
 }
+
+.score-board-img {
+    background-image: url(../image/score-board/blackboard.jpg);
+    background-size: cover;
+    background-position: center;
+    border: rgb(170, 119, 24) 2rem solid;
+  }
