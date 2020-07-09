@@ -374,8 +374,6 @@ class EventHandler {
                         if (this._gameController.isGameFinish) {
                             this._viewController.updateFinish(true);
                         }
-
-
                 }
 
             });
