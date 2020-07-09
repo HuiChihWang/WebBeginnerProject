@@ -108,28 +108,67 @@ class CardViewControl {
             card: '.card',
             cardBackground: '.flip-down',
             gameBoard: '.game-board',
+            banner: '.bg-img',
 
             getPureClassName: strClass => strClass.substring(1),
         };
 
         this._imageSet = {
-            'spur': [
-                'spur-kawhi',
-                'spur-tony',
-                'spur-tim',
-                'spur-manu',
-                'spur-danny',
-                'spur-paty',
-                'spur-bowen',
-                'spur-robinson'
-            ],
+            'spur': {
+                'banner': 'spur-banner',
+                'card-set': [
+                    'spur-kawhi',
+                    'spur-tony',
+                    'spur-tim',
+                    'spur-manu',
+                    'spur-danny',
+                    'spur-paty',
+                    'spur-bowen',
+                    'spur-robinson',
+                ],
+            },
 
-            'laker': [],
+            'laker': {
+                'banner': 'laker-banner',
+                'card-set': [
+                    'laker-kobe',
+                    'laker-lebron',
+                    'laker-kcp',
+                    'laker-kuzma',
+                    'laker-ad',
+                    'laker-dwight',
+                    'laker-caruso',
+                    'laker-rondo',
+                ],
+            },
 
-            'warriors': [],
+            'warriors': {
+                'banner': 'warriors-banner',
+                'card-set': [
+                    'warriors-curry',
+                    'warriors-klay',
+                    'warriors-durant',
+                    'warriors-green',
+                    'warriors-looney',
+                    'warriors-bogut',
+                    'warriors-shawn',
+                    'warriors-igu',
+                ],
+            },
 
-            'celtics': [],
-
+            'celtics': {
+                'banner': 'celtics-banner',
+                'card-set': [
+                    'celtics-hayward',
+                    'celtics-smart',
+                    'celtics-thomas',
+                    'celtics-brown',
+                    'celtics-tatum',
+                    'celtics-pierce',
+                    'celtics-garnett',
+                    'celtics-ray',
+                ],
+            },
         };
 
         this._cardNumber = 16;
@@ -137,6 +176,7 @@ class CardViewControl {
 
     init() {
         this.teamType = document.querySelector(this._DOMString.teamType).value;
+        this.updateBanner();
         this.clearCardGrid();
         this.createCardGrid();
     }
@@ -149,14 +189,14 @@ class CardViewControl {
 
     createCard() {
         let cardElement = document.createElement('div');
-        cardElement.classList.add(this._DOMString.card.substring(1));
-        cardElement.classList.add(this._DOMString.cardBackground.substring(1));
+        cardElement.classList.add(this._DOMString.getPureClassName(this._DOMString.card));
+        cardElement.classList.add(this._DOMString.getPureClassName(this._DOMString.cardBackground));
         return cardElement;
     }
 
     createCardGrid() {
         let gameBoardElement = document.querySelector(this._DOMString.gameBoard);
-        let cardSet = this._imageSet[this.teamType]; 
+        let cardSet = this._imageSet[this.teamType]['card-set']; 
 
         for (let idx = 0; idx < this._cardNumber; ++idx) {
             let cardElement = this.createCard();
@@ -178,11 +218,18 @@ class CardViewControl {
         console.log(gameBoardElement);
     }
 
-    updateView(arrUpdateCardIndex) {
+    updateCardGrid(arrUpdateCardIndex) {
         arrUpdateCardIndex.forEach((cardIndex)=>{
             let cardElement = document.getElementById('card-' + cardIndex);
             this.flipCard(cardElement);
         });
+    }
+
+    updateBanner() {
+        let bannerElement = document.querySelector(this._DOMString.banner);
+        bannerElement.className="";
+        bannerElement.classList.add(this._DOMString.getPureClassName(this._DOMString.banner));
+        bannerElement.classList.add(this._imageSet[this.teamType]['banner']);
     }
 
     flipCard(cardElement) {
@@ -213,6 +260,12 @@ class EventHandler {
         this._gameController = gameController;
     }
 
+    init() {
+        this._viewController.init();
+        this._gameController.init();
+        this.setUpCardEvents();
+    }
+
     getCardIndexFromElement(cardElement) {
         let strCardIndex = cardElement.id.split('-')[1];
         return Number(strCardIndex);
@@ -229,15 +282,15 @@ class EventHandler {
                 //update view
                 if (isChooseSucess){
                     console.log('Choose Sucess');
-                    this._viewController.updateView([cardIndex]);
+                    this._viewController.updateCardGrid([cardIndex]);
 
                     if (this._gameController.failMatchIndexes.length > 0){
-                        console.log('match Fail');
 
                         (function(viewControl, gameConntrol) {
                             setTimeout(function(){
-                                viewControl.updateView(gameConntrol.failMatchIndexes);
-                            }, 800);
+                                console.log('match Faill.')
+                                viewControl.updateCardGrid(gameConntrol.failMatchIndexes);
+                            }, 500);
                         })(this._viewController, this._gameController);
                     }
                 }
@@ -248,15 +301,9 @@ class EventHandler {
 
     setUpNewGameListener() {
         this._viewController.newButtonElement.addEventListener('click', () => {
-            //init controller 
-            this._viewController.init();
-            this._gameController.init();
-
-            this.setUpCardEvents();
+            this.init();
         })
     }
-
-
 }
 
 let numberCards = 16;
@@ -264,6 +311,7 @@ let viewController = new CardViewControl();
 let gameController = new CardGame(numberCards);
 let eventHandler = new EventHandler(viewController, gameController);
 
+eventHandler.init();
 eventHandler.setUpNewGameListener();
 
 

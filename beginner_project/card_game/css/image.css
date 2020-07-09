@@ -1,3 +1,19 @@
+.spur-banner {
+background-image: url(../image/header/spur.jpg);
+}
+
+.laker-banner {
+background-image: url(../image/header/laker.jpg);
+}
+
+.celtics-banner {
+background-image: url(../image/header/celtics.jpg);
+}
+
+.warriors-banner {
+background-image: url(../image/header/warriors.jpg);
+}
+
 .spur-kawhi {
     background-image: url(../image/card/spur/kawhi.jpg);
 }
@@ -28,4 +44,101 @@ background-image: url(../image/card/spur/manu-ginobili.jpg);
 
 .spur-robinson {
     background-image: url(../image/card/spur/robinson.jpg);
+}
+
+.laker-kobe {
+    background-image: url(../image/card/laker/kobe.jpg);
+
+}
+
+.laker-kcp {
+    background-image: url(../image/card/laker/kcp.jpg);
+}
+
+.laker-lebron{
+    background-image: url(../image/card/laker/lebron.jpg);
+}
+
+.laker-dwight {
+    background-image: url(../image/card/laker/dwight.jpg);
+}
+
+.laker-caruso{
+    background-image: url(../image/card/laker/caruso.jpg);
+}
+
+.laker-ad {
+    background-image: url(../image/card/laker/davis.jpg);
+}
+
+.laker-kuzma {
+    background-image: url(../image/card/laker/kuzma.jpeg);
+}
+
+.laker-rondo {
+    background-image: url(../image/card/laker/rondo.jpg);
+}
+
+.celtics-hayward {
+    background-image: url(../image/card/celtics/hayward.jpg);
+}
+
+.celtics-smart {
+    background-image: url(../image/card/celtics/smart.jpg);
+}
+
+.celtics-tatum {
+    background-image: url(../image/card/celtics/tatum.jpg);
+}
+
+.celtics-brown {
+    background-image: url(../image/card/celtics/brown.jpg);
+}
+
+.celtics-pierce {
+    background-image: url(../image/card/celtics/pierce.jpg);
+}
+
+.celtics-ray {
+    background-image: url(../image/card/celtics/ray.jpg);
+}
+
+.celtics-garnett {
+    background-image: url(../image/card/celtics/garnett.jpg);
+}
+
+.celtics-thomas {
+    background-image: url(../image/card/celtics/thomas.jpg);
+}
+
+.warriors-curry {
+    background-image: url(../image/card/warriors/curry.jpg);
+}
+
+.warriors-klay {
+    background-image: url(../image/card/warriors/klay.jpg);
+}
+
+.warriors-durant{
+    background-image: url(../image/card/warriors/durant.jpg);
+}
+
+.warriors-green {
+    background-image: url(../image/card/warriors/green.jpg);
+}
+
+.warriors-bogut {
+    background-image: url(../image/card/warriors/bogut.jpg);
+}
+
+.warriors-shawn {
+    background-image: url(../image/card/warriors/shawn.jpg);
+}
+
+.warriors-igu {
+    background-image: url(../image/card/warriors/igu.jpg);
+}
+
+.warriors-looney {
+    background-image: url(../image/card/warriors/looney.jpg);
 }
