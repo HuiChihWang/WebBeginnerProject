@@ -333,6 +333,7 @@ class EventHandler {
     constructor(viewController, gameController) {
         this._viewController = viewController;
         this._gameController = gameController;
+        this._canFlip = true;
     }
 
     init() {
@@ -348,6 +349,11 @@ class EventHandler {
     setUpCardEvents() {
         this._viewController.cardElements.forEach((cardElement) => {
             cardElement.addEventListener('click', () => {
+
+                if (!this._canFlip) {
+                    return;
+                }
+
                 console.log(`element with id ${cardElement.id} is clicked.`);
 
                 let cardIndex = this.getCardIndexFromElement(cardElement);
@@ -358,13 +364,14 @@ class EventHandler {
                     this._viewController.updateCardGrid([cardIndex]);
 
                     if (this._gameController.failMatchIndexes.length > 0) {
-
-                        (function (viewControl, gameConntrol) {
+                        (function (eventController) {
+                            eventController._canFlip = false;
                             setTimeout(function () {
                                 console.log('match Faill.')
-                                viewControl.updateCardGrid(gameConntrol.failMatchIndexes);
-                            }, 500);
-                        })(this._viewController, this._gameController);
+                                eventController._viewController.updateCardGrid(eventController._gameController.failMatchIndexes);
+                                eventController._canFlip = true;
+                            }, 800);
+                        })(this);
                     }
 
                     this._viewController.updateScores(this._gameController.gameScore,
