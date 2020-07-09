@@ -10,15 +10,12 @@ class Card {
     get index() {
         return this._cardIndex;
     }
+
     get matchIndex() {
         return this._matchIndex;
     }
 
-    set isFlipUp(isFlipUp) { 
-        if (isFlipUp) {
-            this._isVisit = true;
-        }
-
+    set isFlipUp(isFlipUp) {
         this._isFlipUp = isFlipUp;
     }
 
@@ -26,6 +23,9 @@ class Card {
         return this._isFlipUp;
     }
 
+    set isVisited(isVisit) {
+        this._isVisit = isVisit;
+    }
     get isVisited() {
         return this._isVisit;
     }
@@ -64,14 +64,30 @@ class CardGame {
             let matchIndex = newCardIndex + 1;
             let newCard = new Card(newCardIndex, matchIndex);
             let matchCard = new Card(matchIndex, newCardIndex);
-            
+
             this._arrCards.push(newCard);
             this._arrCards.push(matchCard);
-        } 
+        }
+    }
+
+    get NumberOfPairs() {
+        return this._pairNum;
     }
 
     get failMatchIndexes() {
         return this._failMatchIndexes;
+    }
+
+    get gameScore() {
+        return this._score;
+    }
+
+    get flipCount() {
+        return this._count;
+    }
+
+    get isGameFinish() {
+        return this._pairNum === this._pairCards;
     }
 
     chooseCard(index) {
@@ -87,7 +103,6 @@ class CardGame {
         }
 
         else if (!cardChosen.isFlipUp && this._previousChoose) {
-
             cardChosen.isFlipUp = true;
 
             if (cardChosen.isMatchWith(this._previousChoose)) {
@@ -102,10 +117,12 @@ class CardGame {
 
                 if (cardChosen.isVisited || this._previousChoose.isVisited) {
                     this._score -= 1;
+                    this._score = Math.max(this._score, 0);
                 }
 
                 console.log(`[Final Choose] card ${cardChosen.index} fail to match with card ${this._previousChoose.index}`);
             }
+            cardChosen.isVisited = this._previousChoose.isVisited = true;
             this._previousChoose = null;
         }
 
@@ -127,7 +144,15 @@ class CardViewControl {
             card: '.card',
             cardBackground: '.flip-down',
             gameBoard: '.game-board',
+            scoreBoard: '.score-board',
             banner: '.bg-img',
+
+
+            pairNumber: '#pair-number',
+            scoreNumber: '#score-number',
+            countNumber: '#count-number',
+
+            finish: '.finish',
 
             getPureClassName: strClass => strClass.substring(1),
         };
@@ -191,6 +216,7 @@ class CardViewControl {
         };
 
         this._cardNumber = 16;
+        this._pairNums = this._cardNumber / 2;
     }
 
     init() {
@@ -198,12 +224,14 @@ class CardViewControl {
         this.updateBanner();
         this.clearCardGrid();
         this.createCardGrid();
+        this.updateScores(0, 0, 0);
+        this.updateFinish(false);
     }
 
     clearCardGrid() {
         this._gridCards = [];
         let gameBoardElement = document.querySelector(this._DOMString.gameBoard);
-        gameBoardElement.querySelectorAll('*').forEach(node=>node.remove());
+        gameBoardElement.querySelectorAll('*').forEach(node => node.remove());
     }
 
     createCard() {
@@ -215,22 +243,22 @@ class CardViewControl {
 
     createCardGrid() {
         let gameBoardElement = document.querySelector(this._DOMString.gameBoard);
-        let cardSet = this._imageSet[this.teamType]['card-set']; 
+        let cardSet = this._imageSet[this.teamType]['card-set'];
 
         for (let idx = 0; idx < this._cardNumber; ++idx) {
             let cardElement = this.createCard();
             this._gridCards.push(cardElement);
         }
 
-        let setUsedNumber = new Set(Array.from({length: this._cardNumber}, (_, idx)=>idx));
-        this._gridCards.forEach((cardElement)=>{
+        let setUsedNumber = new Set(Array.from({ length: this._cardNumber }, (_, idx) => idx));
+        this._gridCards.forEach((cardElement) => {
             let chooseIdxArray = Array.from(setUsedNumber);
             let randIdx = Math.floor(Math.random() * chooseIdxArray.length);
             let randCardIdx = chooseIdxArray[randIdx];
             setUsedNumber.delete(randCardIdx);
 
             cardElement.id = 'card-' + randCardIdx;
-            cardElement.classList.add(cardSet[Math.floor(randCardIdx/2)]);
+            cardElement.classList.add(cardSet[Math.floor(randCardIdx / 2)]);
             gameBoardElement.appendChild(cardElement);
         });
 
@@ -238,7 +266,7 @@ class CardViewControl {
     }
 
     updateCardGrid(arrUpdateCardIndex) {
-        arrUpdateCardIndex.forEach((cardIndex)=>{
+        arrUpdateCardIndex.forEach((cardIndex) => {
             let cardElement = document.getElementById('card-' + cardIndex);
             this.flipCard(cardElement);
         });
@@ -246,23 +274,51 @@ class CardViewControl {
 
     updateBanner() {
         let bannerElement = document.querySelector(this._DOMString.banner);
-        bannerElement.className="";
+        bannerElement.className = "";
         bannerElement.classList.add(this._DOMString.getPureClassName(this._DOMString.banner));
         bannerElement.classList.add(this._imageSet[this.teamType]['banner']);
+    }
+
+    updateScores(score, pair, count) {
+        let countElement = document.querySelector(this._DOMString.countNumber);
+        let scoreElement = document.querySelector(this._DOMString.scoreNumber);
+        let pairElement = document.querySelector(this._DOMString.pairNumber);
+
+        countElement.textContent = count;
+        scoreElement.textContent = score;
+        pairElement.textContent = pair + ' / ' + this._pairNums;
+
+    }
+
+    updateFinish(isFinish) {
+
+        let finishElement = document.querySelector(this._DOMString.finish);
+        let scoreBoardElement = document.querySelector(this._DOMString.scoreBoard);
+
+        if (!isFinish) {
+            if (finishElement != null){
+                finishElement.remove();
+            }
+        }
+        else {
+            finishElement = document.createElement('div');
+            finishElement.classList.add(this._DOMString.getPureClassName(this._DOMString.finish));
+            finishElement.textContent = 'Finish';
+            scoreBoardElement.appendChild(finishElement);
+        }
     }
 
     flipCard(cardElement) {
         let cardElementClass = cardElement.classList;
         let backgroundClass = this._DOMString.getPureClassName(this._DOMString.cardBackground);
 
-        if (cardElementClass.contains(backgroundClass)){
+        if (cardElementClass.contains(backgroundClass)) {
             cardElementClass.remove(backgroundClass);
         }
         else {
             cardElementClass.add(backgroundClass);
         }
     }
-
 
     get newButtonElement() {
         return document.querySelector(this._DOMString.newButton);
@@ -294,26 +350,34 @@ class EventHandler {
             cardElement.addEventListener('click', () => {
                 console.log(`element with id ${cardElement.id} is clicked.`);
 
-                // choose card in game control
                 let cardIndex = this.getCardIndexFromElement(cardElement);
                 let isChooseSucess = gameController.chooseCard(cardIndex);
 
-                //update view
-                if (isChooseSucess){
+                if (isChooseSucess) {
                     console.log('Choose Sucess');
                     this._viewController.updateCardGrid([cardIndex]);
 
-                    if (this._gameController.failMatchIndexes.length > 0){
+                    if (this._gameController.failMatchIndexes.length > 0) {
 
-                        (function(viewControl, gameConntrol) {
-                            setTimeout(function(){
+                        (function (viewControl, gameConntrol) {
+                            setTimeout(function () {
                                 console.log('match Faill.')
                                 viewControl.updateCardGrid(gameConntrol.failMatchIndexes);
                             }, 500);
                         })(this._viewController, this._gameController);
                     }
+
+                    this._viewController.updateScores(this._gameController.gameScore,
+                        this._gameController.NumberOfPairs,
+                        this._gameController.flipCount);
+
+                        if (this._gameController.isGameFinish) {
+                            this._viewController.updateFinish(true);
+                        }
+
+
                 }
-                
+
             });
         });
     }

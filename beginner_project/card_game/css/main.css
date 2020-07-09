@@ -23,7 +23,6 @@ html {
 
 body {
   margin: 3rem;
-  border: 1px solid;
 }
 
 h1 {
@@ -148,7 +147,6 @@ h1 {
   text-align: center;
 }
 
-
 .sub-header-main {
   font-size: 3rem;
   color: #ffe4c4;
@@ -160,5 +158,13 @@ h1 {
   font-family: "eraser";
   font-style: italic;
   color: #ffff00;
+}
+
+.finish {
+  text-align: center;
+  font-size: 5rem;
+  font-family: "eraser";
+  color: red;
+
 }
 
