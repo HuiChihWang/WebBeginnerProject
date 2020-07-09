@@ -4,6 +4,7 @@ class Card {
         this._matchIndex = matchIndex;
         this._isFlipUp = false;
         this._isMatch = false;
+        this._isVisit = false;
     }
 
     get index() {
@@ -13,12 +14,20 @@ class Card {
         return this._matchIndex;
     }
 
-    set isFlipUp(isFlipUp) {
+    set isFlipUp(isFlipUp) { 
+        if (isFlipUp) {
+            this._isVisit = true;
+        }
+
         this._isFlipUp = isFlipUp;
     }
 
     get isFlipUp() {
         return this._isFlipUp;
+    }
+
+    get isVisited() {
+        return this._isVisit;
     }
 
     set isMatched(isMatch) {
@@ -46,6 +55,9 @@ class CardGame {
         this._arrCards = [];
 
         this._pairCards = numberCards / 2;
+        this._pairNum = 0;
+        this._score = 0;
+        this._count = 0;
 
         for (let pair = 0; pair < this._pairCards; ++pair) {
             let newCardIndex = pair * 2;
@@ -72,7 +84,6 @@ class CardGame {
             this._previousChoose = cardChosen;
 
             console.log(`[First Choose] choose card ${cardChosen.index}`);
-
         }
 
         else if (!cardChosen.isFlipUp && this._previousChoose) {
@@ -81,11 +92,18 @@ class CardGame {
 
             if (cardChosen.isMatchWith(this._previousChoose)) {
                 cardChosen.isMatch = this._previousChoose.isMatch = true;
+                this._pairNum += 1;
+                this._score += 3;
                 console.log(`[Final Choose] card ${cardChosen.index} match with card ${this._previousChoose.index}`);
             }
             else {
                 cardChosen.isFlipUp = this._previousChoose.isFlipUp = false;
                 this._failMatchIndexes = [cardChosen.index, this._previousChoose.index];
+
+                if (cardChosen.isVisited || this._previousChoose.isVisited) {
+                    this._score -= 1;
+                }
+
                 console.log(`[Final Choose] card ${cardChosen.index} fail to match with card ${this._previousChoose.index}`);
             }
             this._previousChoose = null;
@@ -96,6 +114,7 @@ class CardGame {
             return false;
         }
 
+        this._count += 1;
         return true;
     }
 }
