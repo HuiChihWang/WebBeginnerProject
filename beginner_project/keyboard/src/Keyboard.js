@@ -5,6 +5,8 @@ const state = {
 
 const elementStrings = {
     keyBoardMain: 'keyboard',
+    keyBoardButton: 'keyboard__icon',
+    keyBoardHidden: 'keyboard--hidden',
     keyButton: 'keyboard__key',
     keyLine: 'keyboard__keys',
     wideKey: 'keyboard__key--wide',
@@ -98,9 +100,16 @@ const processSpecialButton = (button, key) => {
 const createIconHTML = key => {
     return `<i class="material-icons">${key}</i>`;
 }
+
 const createEmptyKeyBoard = () => {
     const keyBoardView = document.createElement('div');
-    keyBoardView.setAttribute('class', elementStrings.keyBoardMain);
+    keyBoardView.setAttribute('class', `${elementStrings.keyBoardMain} ${elementStrings.keyBoardHidden}`);
+    
+    const keyBoardButton = document.createElement('div');
+    keyBoardButton.setAttribute('class', elementStrings.keyBoardButton);
+    keyBoardButton.innerHTML = createIconHTML('keyboard_hide');
+    keyBoardView.appendChild(keyBoardButton);
+
     document.body.appendChild(keyBoardView);
     state.keyBoardView = keyBoardView;
 };
@@ -126,6 +135,7 @@ const initKeyboard = () => {
     renderKeys();
 
     state.keyBoardView.addEventListener('click', keyController);
+    state.keyBoardView.addEventListener('click', controlKeyBoard);
 };
 
 window.onload = initKeyboard;
@@ -134,6 +144,21 @@ const keyController = event => {
     const button = event.target.closest(`.${elementStrings.keyButton}`);
     if (button) {
         inputButton(button);
+    }
+}
+
+const controlKeyBoard = event => {
+    const button = event.target.closest(`.${elementStrings.keyBoardButton}`);
+    
+    if (button) {
+        const isKeyBoardHide = state.keyBoardView.classList.contains(elementStrings.keyBoardHidden);
+
+        if (isKeyBoardHide) {
+            state.keyBoardView.classList.remove(elementStrings.keyBoardHidden);
+        }
+        else {
+            state.keyBoardView.classList.add(elementStrings.keyBoardHidden);
+        }
     }
 }
 
