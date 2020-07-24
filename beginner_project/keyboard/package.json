@@ -1,0 +1,20 @@
+{
+  "name": "keyboard",
+  "version": "1.0.0",
+  "description": "keyboard project",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development"
+  },
+  "author": "gilbert wang",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^3.6.0",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
