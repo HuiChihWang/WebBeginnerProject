@@ -1,21 +1,46 @@
 const state = {
     keyBoardView: null,
+    textArea: document.getElementsByTagName('textarea')[0],
 };
 
 const elementStrings = {
     keyBoardMain: 'keyboard',
+    keyButton: 'keyboard__key',
     keyLine: 'keyboard__keys',
     wideKey: 'keyboard__key--wide',
     extraWideKey: 'keyboard__key--extra-wide',
     darkKey: 'keyboard__key--dark',
+    activatableKey: 'keyboard__key--activatable',
 };
 
 const specialKey = {
-    'backspace': [elementStrings.wideKey],
-    'keyboard_capslock': [elementStrings.wideKey],
-    'check_circle': [elementStrings.darkKey, elementStrings.darkKey],
-    'space_bar': [elementStrings.extraWideKey],
-    'keyboard_return': [elementStrings.wideKey],
+    'backspace': {
+        class: [elementStrings.wideKey],
+        content: '',
+        action: () => {
+            state.textArea.value = state.textArea.value.slice(0, -1);
+        }
+    }
+    ,
+    'keyboard_capslock': {
+        class: [elementStrings.wideKey, elementStrings.activatableKey],
+        content: '',
+        action: () => { },
+    },
+    'check_circle': {
+        class: [elementStrings.darkKey, elementStrings.extraWideKey],
+        content: '',
+    },
+    'space_bar': {
+        class: [elementStrings.extraWideKey],
+        content: ' ',
+        action: () => { },
+    },
+    'keyboard_return': {
+        class: [elementStrings.wideKey],
+        content: '\n',
+        action: ()=>{},
+    }
 }
 
 const keyBoardPattern = [
@@ -28,8 +53,7 @@ const keyBoardPattern = [
 
 const createButton = key => {
     const button = document.createElement('button');
-    button.setAttribute('class', 'keyboard__key');
-    // button.textContent = key;
+    button.setAttribute('class', elementStrings.keyButton);
 
     if (key in specialKey) {
         processSpecialButton(button, key);
@@ -43,7 +67,7 @@ const createButton = key => {
 };
 
 const processSpecialButton = (button, key) => {
-    specialKey[key].forEach(classElement=>{
+    specialKey[key].class.forEach(classElement => {
         button.classList.add(classElement);
     });
 };
@@ -72,13 +96,34 @@ const renderKeys = () => {
     });
 };
 
-const controlKeyBoard = () => {
-    console.log(`control Keyboard`);
+const initKeyboard = () => {
+    console.log(`init Keyboard`);
 
     createEmptyKeyBoard();
     renderKeys();
+
+    state.keyBoardView.addEventListener('click', keyController);
 };
 
-window.onload = controlKeyBoard;
+window.onload = initKeyboard;
+
+const keyController = event => {
+    const button = event.target.closest(`.${elementStrings.keyButton}`);
+    if (button) {
+        inputButton(button);
+    }
+}
+
+const inputButton = keyButton => {
+    const key = keyButton.textContent;
+
+    if (key in specialKey) {
+        state.textArea.value += specialKey[key].content;
+        specialKey[key].action();
+    }
+    else {
+        state.textArea.value += key;
+    }
+}
 
 
