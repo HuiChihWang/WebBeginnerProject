@@ -15,6 +15,21 @@
   bottom: -100%;
 }
 
+.keyboard__icon {
+  height: 30px;
+  width: 10%;
+  color: #ffffff;
+  font-size: 2rem;
+  outline: none;
+
+  cursor: pointer;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  /* border: solid 1px; */
+  text-align: center;
+}
+
 .keyboard__keys {
   text-align: center;
   display: flex;
