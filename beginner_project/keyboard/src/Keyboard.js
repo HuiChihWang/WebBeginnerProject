@@ -11,6 +11,7 @@ const elementStrings = {
     extraWideKey: 'keyboard__key--extra-wide',
     darkKey: 'keyboard__key--dark',
     activatableKey: 'keyboard__key--activatable',
+    activatedKey: 'keyboard__key--active',
 };
 
 const specialKey = {
@@ -25,11 +26,21 @@ const specialKey = {
     'keyboard_capslock': {
         class: [elementStrings.wideKey, elementStrings.activatableKey],
         content: '',
-        action: () => { },
+        action: () => {
+            const capsLockButtonClass = state.keyBoardView.querySelector(`.${elementStrings.activatableKey}`).classList;
+            const isKeyActivate = capsLockButtonClass.contains(elementStrings.activatedKey);
+
+            isKeyActivate ? capsLockButtonClass.remove(elementStrings.activatedKey) : capsLockButtonClass.add(elementStrings.activatedKey);
+
+
+            updateKeBoardView(!isKeyActivate);
+
+         },
     },
     'check_circle': {
         class: [elementStrings.darkKey, elementStrings.extraWideKey],
         content: '',
+        action: () => { },
     },
     'space_bar': {
         class: [elementStrings.extraWideKey],
@@ -39,7 +50,7 @@ const specialKey = {
     'keyboard_return': {
         class: [elementStrings.wideKey],
         content: '\n',
-        action: ()=>{},
+        action: ()=>{ },
     }
 }
 
@@ -50,6 +61,18 @@ const keyBoardPattern = [
     ['check_circle', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?'],
     ['space_bar'],
 ]
+
+const updateKeBoardView = isKeyActivate => {
+    const allKeyButton = state.keyBoardView.querySelectorAll(`.${elementStrings.keyButton}`);
+
+    allKeyButton.forEach(button=>{
+        const key = button.textContent;
+        if (! (key in specialKey)){
+            button.textContent = isKeyActivate ? key.toUpperCase() : key.toLowerCase();
+            
+        }
+    });
+};
 
 const createButton = key => {
     const button = document.createElement('button');
