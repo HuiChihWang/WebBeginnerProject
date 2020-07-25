@@ -40,7 +40,7 @@ const specialKey = {
          },
     },
     'check_circle': {
-        class: [elementStrings.darkKey, elementStrings.extraWideKey],
+        class: [elementStrings.darkKey, elementStrings.wideKey],
         content: '',
         action: () => { },
     },
@@ -103,7 +103,8 @@ const createIconHTML = key => {
 
 const createEmptyKeyBoard = () => {
     const keyBoardView = document.createElement('div');
-    keyBoardView.setAttribute('class', `${elementStrings.keyBoardMain} ${elementStrings.keyBoardHidden}`);
+    keyBoardView.classList.add(elementStrings.keyBoardMain);
+    keyBoardView.classList.add(elementStrings.keyBoardHidden);
     
     const keyBoardButton = document.createElement('div');
     keyBoardButton.setAttribute('class', elementStrings.keyBoardButton);
