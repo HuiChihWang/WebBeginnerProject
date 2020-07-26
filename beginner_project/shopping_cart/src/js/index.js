@@ -2,19 +2,21 @@
 const elements = {
     shoppingButton: document.querySelector('.banner-btn'),
     productBoard: document.querySelector('.products'),
+    productList: document.querySelector('.products-center'),
+    cartOverlay: document.querySelector('.cart-overlay'),
+    cartBoard: document.querySelector('.cart'),
+    cartContent: document.querySelector('.cart-content'),
 }
 
 const elementsString = {
-    productList: 'products-center',
     addBagButton: 'bag-btn',
+    closeCartButton: 'close-cart',
 }
+
+const state = {};
 
 /* product model */
 class Products {
-    constructor() {
-
-    }
-
     async fetchProducts() {
         try {
             await fetch('./js/products.json')
@@ -38,32 +40,57 @@ class Products {
     get productList() {
         return this._products;
     }
+
+    getProductById(productId) {
+        const productIndex = this._products.findIndex(product => product.id === productId);
+        return this._products[productIndex];
+    }
+}
+
+/* Cart Model */
+class CartList {
+    constructor() {
+        this.totalPrice = 0;
+        this.cartItems = [];
+    }
+
+    addItemToCart(product) {
+        this.cartItems.push(product);
+    }
+
+    removeItemFromCart(product) {
+        const productId = product.id;
+        const productIndex = this._products.findIndex(productItem => productItem.id === productId);
+        if (productIndex != -1) {
+            this.cartItems.splice(productIndex, 1);
+        }
+    }
 }
 
 /* view controller */
 class ProductView {
-
-    constructor() {
-        this._initProductBoard();
+    _initProductBoard() {
+        const productBoardHeader = elements.productBoard.querySelector('.section-title');
+        if (!productBoardHeader) {
+            const markUp = `
+            <div class="section-title">
+                <h2>Our Product</h2>
+            </div>
+            `;
+            elements.productBoard.insertAdjacentHTML('afterbegin', markUp);
+        }
     }
 
-    _initProductBoard() {
-        const markUp = `
-        <div class="section-title">
-            <h2>Our Product</h2>
-        </div>
-        <div class="${elementsString.productList}">
-        </div>
-        `;
-        elements.productBoard.insertAdjacentHTML('afterbegin', markUp);
+    _clearProducts() {
+        elements.productList.innerHTML = '';
     }
 
     renderProducts(products) {
-        const productsBoard = document.querySelector(`.${elementsString.productList}`);
-
+        this._initProductBoard();
+        this._clearProducts();
         products.forEach(product => {
             const productHTML = this.createProductHTML(product);
-            productsBoard.insertAdjacentHTML('beforeend', productHTML);
+            elements.productList.insertAdjacentHTML('beforeend', productHTML);
         });
     }
 
@@ -91,26 +118,83 @@ class ProductView {
     }
 }
 
+/*cart View */
+class CartView {
+    showCartView() {
+        elements.cartOverlay.style.visibility = 'visible';
+        elements.cartBoard.classList.add('show-cart');
+    }
+
+    hideCartView() {
+        elements.cartBoard.classList.remove('show-cart');
+        elements.cartOverlay.style.visibility = 'hidden';
+    }
+
+    renderItemIntoCart(product) {
+        const productHTML = this.createCartItemHTML(product);
+        elements.cartContent.insertAdjacentHTML('beforeend', productHTML);
+    }
+
+    removeItemFromCart(product) {
+
+    }
+
+    createCartItemHTML(product) {
+        return`
+        <div class="cart-item">
+            <img src="${product.image}" alt="product" />
+            <div>
+                <h4>${product.title}</h4>
+                <h5>$${product.price}</h5>
+                <span class="remove-item"> remove </span>
+            </div>
+            <div>
+                <i class="fas fa-chevron-up"></i>
+                <p class="item-amount">1</p>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+      </div> 
+        `;
+    }
+}
 
 /* event control */
-const initProductsView = async () => {
-    const products = new Products();
-    const productView = new ProductView();
-    await products.fetchProducts();
-    productView.renderProducts(products.productList);
+const initSetting = () => {
+    state.products = new Products();
+    state.productView = new ProductView();
+    state.cartList = new CartList();
+    state.cartView = new CartView();
+};
 
+const initProductsView = async () => {
+    await state.products.fetchProducts();
+    state.productView.renderProducts(state.products.productList);
 }
 
 const controlAddToCart = event => {
     const button = event.target.closest(`.${elementsString.addBagButton}`);
     if (button) {
-        const id = button.dataset.id;
-        console.log(`button press ${id}`);
+        const productId = button.dataset.id;
+
+        const productChoose = state.products.getProductById(productId);
+        if (productChoose) {
+            state.cartList.addItemToCart(productChoose);
+            state.cartView.renderItemIntoCart(productChoose);
+            state.cartView.showCartView();
+        }
     }
 };
 
+window.onload = initSetting();
+
 elements.shoppingButton.addEventListener('click', initProductsView);
-document.addEventListener('click', controlAddToCart);
+elements.productList.addEventListener('click', controlAddToCart);
+
+elements.cartBoard.addEventListener('click', event=>{
+    if (event.target.matches(`.${elementsString.closeCartButton}, .${elementsString.closeCartButton} *`)){
+        state.cartView.hideCartView();
+    }
+})
 
 
 
