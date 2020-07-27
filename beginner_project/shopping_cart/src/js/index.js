@@ -56,8 +56,13 @@ class Products {
 /* Cart Model */
 class CartList {
     constructor() {
-        this.totalPrice = 0;
         this.mapIdCartItem = new Map();
+        this.clearItems();
+    }
+
+    clearItems() {
+        this.totalPrice = 0;
+        this.mapIdCartItem.clear();
     }
 
     addItemToCart(product, amount = 1) {
@@ -100,6 +105,10 @@ class CartList {
 
     getItemByProductId(productId) {
         return this.mapIdCartItem.get(productId);
+    }
+
+    get itemNumber() {
+        return this.mapIdCartItem.size;
     }
 
     isItemInCart(productId) {
@@ -193,6 +202,10 @@ class CartView {
         }
     }
 
+    updateTotalCartItemNumber(cartItemsNumber) {
+        const cartItemsAmount = elements.cartButton.querySelector('.cart-items');
+        cartItemsAmount.textContent = cartItemsNumber;
+    }
     updateTotalCost(totalAmount) {
         const cartAmount = elements.cartFooter.querySelector('.cart-total');
         cartAmount.textContent = totalAmount;
@@ -253,12 +266,17 @@ const controlAddToCart = event => {
             state.productView.updateBagButtonText(productId, true);
 
             //change item number in car button
+            state.cartView.updateTotalCartItemNumber(state.cartList.itemNumber);
         }
     }
 };
 
 
 window.onload = initSetting();
+
+elements.cartButton.addEventListener('click', event=>{
+    state.cartView.showCartView();
+});
 
 elements.shoppingButton.addEventListener('click', initProductsView);
 elements.productList.addEventListener('click', controlAddToCart);
