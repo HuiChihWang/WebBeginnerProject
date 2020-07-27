@@ -7,11 +7,16 @@ const elements = {
     cartBoard: document.querySelector('.cart'),
     cartContent: document.querySelector('.cart-content'),
     cartFooter: document.querySelector('.cart-footer'),
+    cartButton: document.querySelector('.cart-btn'),
 }
 
 const elementsString = {
+    cartItem: 'cart-item',
     addBagButton: 'bag-btn',
     closeCartButton: 'close-cart',
+    increaseButton: 'fa-chevron-up',
+    decreaseButton: 'fa-chevron-down',
+    removeButton: 'remove-item',
 }
 
 const state = {};
@@ -76,16 +81,16 @@ class CartList {
         this.totalPrice += (product.price * amount);
     }
 
-    removeItemFromCart(product) {
-        const removeItem = this.mapIdCartItem.get(product.id);
+    removeItemFromCart(productId) {
+        const removeItem = this.mapIdCartItem.get(productId);
         if (removeItem) {
             this.totalPrice -= (removeItem.amount * removeItem.price);
-            this.mapIdCartItem.delete(product.id);
+            this.mapIdCartItem.delete(productId);
         }
     }
 
-    decreaseItemFromCart(product, decreaseAmount = 1) {
-        const cartItemQuery = this.mapIdCartItem.get(product.id);
+    decreaseItemFromCart(productId, decreaseAmount = 1) {
+        const cartItemQuery = this.mapIdCartItem.get(productId);
         if (cartItemQuery) {
             cartItemQuery.amount -= decreaseAmount;
             cartItemQuery.amount = Math.max(1, cartItemQuery.amount);
@@ -128,6 +133,14 @@ class ProductView {
             const productHTML = this.createProductHTML(product);
             elements.productList.insertAdjacentHTML('beforeend', productHTML);
         });
+    }
+
+    updateBagButtonText(productId, isInCart) {
+        const productElement = elements.productList.querySelector(`[data-id="${productId}"]`);
+        console.log(productElement);
+        if (productElement) {
+            productElement.textContent = isInCart ? 'in bag' : 'add to bag';
+        }
     }
 
     createProductHTML(product) {
@@ -185,7 +198,7 @@ class CartView {
         cartAmount.textContent = totalAmount;
     }
 
-    removeItemFromCart(cartItem) {
+    removeItemFromCartView(cartItemId) {
 
     }
 
@@ -237,12 +250,13 @@ const controlAddToCart = event => {
             state.cartView.showCartView();
 
             // change product tag
+            state.productView.updateBagButtonText(productId, true);
+
+            //change item number in car button
         }
- 
-
-
     }
 };
+
 
 window.onload = initSetting();
 
@@ -253,7 +267,39 @@ elements.cartBoard.addEventListener('click', event => {
     if (event.target.matches(`.${elementsString.closeCartButton}, .${elementsString.closeCartButton} *`)) {
         state.cartView.hideCartView();
     }
-})
+
+});
+
+elements.cartContent.addEventListener('click', event => {
+    let cartItemElement = event.target.closest(`.${elementsString.cartItem}`);
+
+    if (cartItemElement) {
+
+        const productId = cartItem.dataset.id;
+        const product = this.products.getProductById(productId);
+
+
+        if (event.target.matches(`.${elementsString.removeButton}`)) {
+            state.cartList.removeItemFromCart(productId);
+            state.cartView.removeItemFromCartView(productId);
+        }
+        else if (event.target.matches(`.${elementsString.increaseButton}`)) {
+            state.cartList.addItemToCart(product);
+            const cartItem = state.cartList.getItemByProductId(productId);
+            state.cartView.updateItemAmountInCart(cartItem);
+        }
+
+        else if (event.target.matches(`.${elementsString.decreaseButton}`)) {
+            state.cartList.decreaseItemFromCart(productId);
+            const cartItem = state.cartList.getItemByProductId(productId);
+            state.cartView.updateItemAmountInCart(cartItem);
+        }
+
+        state.cartView.updateTotalCost(this.cartList.totalPrice);
+    }
+
+});
+
 
 
 
