@@ -6,6 +6,7 @@ const elements = {
     cartOverlay: document.querySelector('.cart-overlay'),
     cartBoard: document.querySelector('.cart'),
     cartContent: document.querySelector('.cart-content'),
+    cartFooter: document.querySelector('.cart-footer'),
 }
 
 const elementsString = {
@@ -51,20 +52,55 @@ class Products {
 class CartList {
     constructor() {
         this.totalPrice = 0;
-        this.cartItems = [];
+        this.mapIdCartItem = new Map();
     }
 
-    addItemToCart(product) {
-        this.cartItems.push(product);
+    addItemToCart(product, amount = 1) {
+        if (this.mapIdCartItem.has(product.id)) {
+            const cartItemQuery = this.mapIdCartItem.get(product.id);
+            console.log(cartItemQuery);
+            cartItemQuery.amout += amount;
+        }
+        else {
+            const cartItem = {
+                price: product.price,
+                amount: amount,
+                title: product.title,
+                image: product.image,
+                id: product.id,
+            }
+
+            this.mapIdCartItem.set(product.id, cartItem);
+        }
+
+        this.totalPrice += (product.price * amount);
     }
 
     removeItemFromCart(product) {
-        const productId = product.id;
-        const productIndex = this._products.findIndex(productItem => productItem.id === productId);
-        if (productIndex != -1) {
-            this.cartItems.splice(productIndex, 1);
+        const removeItem = this.mapIdCartItem.get(product.id);
+        if (removeItem) {
+            this.totalPrice -= (removeItem.amount * removeItem.price);
+            this.mapIdCartItem.delete(product.id);
         }
     }
+
+    decreaseItemFromCart(product, decreaseAmount = 1) {
+        const cartItemQuery = this.mapIdCartItem.get(product.id);
+        if (cartItemQuery) {
+            cartItemQuery.amount -= decreaseAmount;
+            cartItemQuery.amount = Math.max(1, cartItemQuery.amount);
+            this.totalPrice -= (cartItemQuery.amount * cartItemQuery.price);
+        }
+    }
+
+    getItemByProductId(productId) {
+        return this.mapIdCartItem.get(productId);
+    }
+
+    isItemInCart(productId) {
+        return this.mapIdCartItem.has(productId);
+    }
+
 }
 
 /* view controller */
@@ -130,22 +166,36 @@ class CartView {
         elements.cartOverlay.style.visibility = 'hidden';
     }
 
-    renderItemIntoCart(product) {
-        const productHTML = this.createCartItemHTML(product);
-        elements.cartContent.insertAdjacentHTML('beforeend', productHTML);
+    createItemIntoCart(cartItem) {
+        const cartItemHTML = this.createCartItemHTML(cartItem);
+        elements.cartContent.insertAdjacentHTML('beforeend', cartItemHTML);
     }
 
-    removeItemFromCart(product) {
+    updateItemAmountInCart(cartItem) {
+        const cartElement = elements.cartContent.querySelector(`[data-id="${cartItem.id}"]`);
+
+        if (cartElement) {
+            const amount = cartElement.querySelector('.item-amount');
+            amount.textContent = cartItem.amount;
+        }
+    }
+
+    updateTotalCost(totalAmount) {
+        const cartAmount = elements.cartFooter.querySelector('.cart-total');
+        cartAmount.textContent = totalAmount;
+    }
+
+    removeItemFromCart(cartItem) {
 
     }
 
-    createCartItemHTML(product) {
-        return`
-        <div class="cart-item">
-            <img src="${product.image}" alt="product" />
+    createCartItemHTML(cartItem) {
+        return `
+        <div class="cart-item" data-id="${cartItem.id}">
+            <img src="${cartItem.image}" alt="cartItem" />
             <div>
-                <h4>${product.title}</h4>
-                <h5>$${product.price}</h5>
+                <h4>${cartItem.title}</h4>
+                <h5>$${cartItem.price}</h5>
                 <span class="remove-item"> remove </span>
             </div>
             <div>
@@ -175,13 +225,22 @@ const controlAddToCart = event => {
     const button = event.target.closest(`.${elementsString.addBagButton}`);
     if (button) {
         const productId = button.dataset.id;
+        const isCartItemFirstAdded = !state.cartList.isItemInCart(productId);
 
-        const productChoose = state.products.getProductById(productId);
-        if (productChoose) {
-            state.cartList.addItemToCart(productChoose);
-            state.cartView.renderItemIntoCart(productChoose);
+        if (isCartItemFirstAdded) {
+            const productItem = state.products.getProductById(productId);
+            state.cartList.addItemToCart(productItem);
+
+            const cartItem = state.cartList.getItemByProductId(productId);
+            state.cartView.createItemIntoCart(cartItem);
+            state.cartView.updateTotalCost(state.cartList.totalPrice);
             state.cartView.showCartView();
+
+            // change product tag
         }
+ 
+
+
     }
 };
 
@@ -190,8 +249,8 @@ window.onload = initSetting();
 elements.shoppingButton.addEventListener('click', initProductsView);
 elements.productList.addEventListener('click', controlAddToCart);
 
-elements.cartBoard.addEventListener('click', event=>{
-    if (event.target.matches(`.${elementsString.closeCartButton}, .${elementsString.closeCartButton} *`)){
+elements.cartBoard.addEventListener('click', event => {
+    if (event.target.matches(`.${elementsString.closeCartButton}, .${elementsString.closeCartButton} *`)) {
         state.cartView.hideCartView();
     }
 })
