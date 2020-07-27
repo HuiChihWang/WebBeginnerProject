@@ -8,6 +8,7 @@ const elements = {
     cartContent: document.querySelector('.cart-content'),
     cartFooter: document.querySelector('.cart-footer'),
     cartButton: document.querySelector('.cart-btn'),
+    clearCart: document.querySelector('.clear-cart'),
 }
 
 const elementsString = {
@@ -67,9 +68,7 @@ class CartList {
 
     addItemToCart(product, amount = 1) {
         if (this.mapIdCartItem.has(product.id)) {
-            const cartItemQuery = this.mapIdCartItem.get(product.id);
-            console.log(cartItemQuery);
-            cartItemQuery.amout += amount;
+            this.mapIdCartItem.get(product.id).amount += amount;
         }
         else {
             const cartItem = {
@@ -97,9 +96,13 @@ class CartList {
     decreaseItemFromCart(productId, decreaseAmount = 1) {
         const cartItemQuery = this.mapIdCartItem.get(productId);
         if (cartItemQuery) {
-            cartItemQuery.amount -= decreaseAmount;
-            cartItemQuery.amount = Math.max(1, cartItemQuery.amount);
-            this.totalPrice -= (cartItemQuery.amount * cartItemQuery.price);
+            const newAmount = Math.max(1, cartItemQuery.amount - decreaseAmount);
+            const amountChange = cartItemQuery.amount - newAmount;
+
+            this.totalPrice -= (amountChange * cartItemQuery.price);
+            cartItemQuery.amount = newAmount;
+
+            console.log(cartItemQuery);
         }
     }
 
@@ -109,6 +112,10 @@ class CartList {
 
     get itemNumber() {
         return this.mapIdCartItem.size;
+    }
+
+    get allItemIds() {
+        return Array.from(this.mapIdCartItem.keys());
     }
 
     isItemInCart(productId) {
@@ -146,7 +153,6 @@ class ProductView {
 
     updateBagButtonText(productId, isInCart) {
         const productElement = elements.productList.querySelector(`[data-id="${productId}"]`);
-        console.log(productElement);
         if (productElement) {
             productElement.textContent = isInCart ? 'in bag' : 'add to bag';
         }
@@ -188,6 +194,11 @@ class CartView {
         elements.cartOverlay.style.visibility = 'hidden';
     }
 
+    clearCartView() {
+        elements.cartContent.innerHTML = '';
+        console.log(elements.cartContent);
+    }
+
     createItemIntoCart(cartItem) {
         const cartItemHTML = this.createCartItemHTML(cartItem);
         elements.cartContent.insertAdjacentHTML('beforeend', cartItemHTML);
@@ -206,13 +217,17 @@ class CartView {
         const cartItemsAmount = elements.cartButton.querySelector('.cart-items');
         cartItemsAmount.textContent = cartItemsNumber;
     }
-    updateTotalCost(totalAmount) {
+    updateTotalCost(totalCost) {
+        const fixCost = Math.abs(Number(totalCost).toFixed(2));
         const cartAmount = elements.cartFooter.querySelector('.cart-total');
-        cartAmount.textContent = totalAmount;
+        cartAmount.textContent = fixCost;
     }
 
     removeItemFromCartView(cartItemId) {
-
+        const cartElement = elements.cartContent.querySelector(`[data-id="${cartItemId}"]`);
+        if (cartElement) {
+            elements.cartContent.removeChild(cartElement);
+        }
     }
 
     createCartItemHTML(cartItem) {
@@ -271,6 +286,33 @@ const controlAddToCart = event => {
     }
 };
 
+const controlRemoveItem = (productId)=>{
+    state.cartList.removeItemFromCart(productId);
+    state.cartView.removeItemFromCartView(productId);
+    state.cartView.updateTotalCartItemNumber(state.cartList.itemNumber);
+    state.cartView.updateTotalCost(state.cartList.totalPrice);
+    state.productView.updateBagButtonText(productId, false);
+}
+
+const controlChangeItembyOne = (product, type) => {
+    const productId = product.id;
+    if (type === 'increase') {
+        state.cartList.addItemToCart(product);
+    }
+    else if (type === 'decrease') {
+        state.cartList.decreaseItemFromCart(productId);
+    }
+
+    const cartItem = state.cartList.getItemByProductId(productId);
+    state.cartView.updateItemAmountInCart(cartItem);
+    state.cartView.updateTotalCost(state.cartList.totalPrice);
+};
+
+const controlClearCart = () => {
+    console.log('press clear cart');
+    const productIds = state.cartList.allItemIds;
+    productIds.forEach(productId=>controlRemoveItem(productId));
+}
 
 window.onload = initSetting();
 
@@ -292,31 +334,23 @@ elements.cartContent.addEventListener('click', event => {
     let cartItemElement = event.target.closest(`.${elementsString.cartItem}`);
 
     if (cartItemElement) {
-
-        const productId = cartItem.dataset.id;
-        const product = this.products.getProductById(productId);
-
+        const productId = cartItemElement.dataset.id;
+        const product = state.products.getProductById(productId);
 
         if (event.target.matches(`.${elementsString.removeButton}`)) {
-            state.cartList.removeItemFromCart(productId);
-            state.cartView.removeItemFromCartView(productId);
+            controlRemoveItem(productId);
         }
         else if (event.target.matches(`.${elementsString.increaseButton}`)) {
-            state.cartList.addItemToCart(product);
-            const cartItem = state.cartList.getItemByProductId(productId);
-            state.cartView.updateItemAmountInCart(cartItem);
+            controlChangeItembyOne(product, 'increase')
         }
 
         else if (event.target.matches(`.${elementsString.decreaseButton}`)) {
-            state.cartList.decreaseItemFromCart(productId);
-            const cartItem = state.cartList.getItemByProductId(productId);
-            state.cartView.updateItemAmountInCart(cartItem);
+            controlChangeItembyOne(product, 'decrease')
         }
-
-        state.cartView.updateTotalCost(this.cartList.totalPrice);
     }
-
 });
+
+elements.clearCart.addEventListener('click', controlClearCart);
 
 
 
