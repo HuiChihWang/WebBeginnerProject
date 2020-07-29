@@ -61,43 +61,60 @@ body {
     color: gray;
     border: none;
     font-family: 'Noto Sans', sans-serif;
+    cursor: pointer;
+    outline: none;
     
 }
 
 .name-logo {
-    width: 100%;
     text-align: center;
     font-size: 6rem;
-    position: absolute;
-    top: 10vh;
     font-family: 'Satisfy', cursive;
+    margin: 6rem auto;
 }
 
 .nav {
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    top: 30vh;
+    margin: 10rem auto;
 }
 
 .nav__link {
     text-align: center;
-    margin: 2rem auto;
-}
-
-.nav__link--font {
+    margin: 2.5rem auto;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-transform: capitalize;
-    color: rgb(117, 122, 128);
-    
 }
 
-.social {
-    text-align: center;
+.nav__link a:link {
+    color: rgb(128, 130, 131);
+    text-decoration: none;
+}
+
+.nav__link a:visited {
+    color: rgb(128, 130, 131);
+    text-decoration: none;
+}
+
+.nav__link a:hover {
+    color: black;
+    font-size: 3rem;
+}
+
+.nav__link a:active {
+    background-color: rgba(199, 191, 191, 0.733);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+}
+
+.footer {
     position: absolute;
-    width: 100%;
     bottom: 10vh;
+    width: 100%;
+}
+
+.footer__social {
+    text-align: center;
+    width: 100%;
 }
 
 .social__tag {
@@ -105,6 +122,13 @@ body {
     font-size: 2rem;
     margin: 1rem;
     color: rgb(7, 22, 56)
+}
+
+.footer__copy {
+    color: rgba(155, 148, 148, 0.74);
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1rem;
 }
 
 .intro {
